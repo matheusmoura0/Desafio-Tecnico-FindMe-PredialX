@@ -13,9 +13,9 @@ const findAll = async (_req, res) => {
     res.status(200).json(clientes);
 }
 
-const getById = (req, res) => { 
+const getById =  async (req, res) => { 
     const{ id } = req.params;
-    const cliente = clienteService.getById(id);
+    const cliente = await  clienteService.getById(id);
 
     return res.status(200).json(cliente);
 }

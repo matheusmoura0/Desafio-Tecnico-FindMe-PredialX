@@ -10,8 +10,9 @@ const getAll =  async () => {
     return customer
 }
 
-const getById = (id) => { 
-    return Clientes.findByPk(id);
+const getById = async (id) => { 
+    const customerById = await Clientes.findByPk(id);
+    return customerById
 }
 
 const update = (id, nome) => { 
