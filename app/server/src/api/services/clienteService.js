@@ -15,8 +15,10 @@ const getById = async (id) => {
     return customerById
 }
 
-const update = (id, nome) => { 
-    return Clientes.update({ nome }, { where: { id } });
+const update = async  (id, name) => { 
+    const customerById = await Clientes.findByPk(id);
+    customerById.update({ name });
+    return customerById
 }
 
 const deletebyId = (id) => { 

@@ -20,10 +20,11 @@ const getById =  async (req, res) => {
     return res.status(200).json(cliente);
 }
 
-const update = (req, res) => { 
+const update = async  (req, res) => { 
     const{ id } = req.params;
-    const{ nome } = req.body;
-    const cliente = clienteService.update(id, nome);
+    const{ name } = req.body;
+
+    const cliente =  await clienteService.update(id, name);
 
     return res.status(200).json(cliente);
 }
