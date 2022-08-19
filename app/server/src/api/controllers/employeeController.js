@@ -27,9 +27,9 @@ const getById =  async (req, res) => {
 const update = async  (req, res) => { 
     try {
         const{ id } = req.params;
-        const{ name } = req.body;
+        const{ name, email } = req.body;
     
-        const employe =  await employeService.update(id, name);
+        const employe =  await employeService.update(id, name, email);
     
         return res.status(200).json(employe);
     } catch (error) { 

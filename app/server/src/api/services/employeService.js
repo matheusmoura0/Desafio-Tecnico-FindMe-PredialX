@@ -15,9 +15,9 @@ const getById = async (id) => {
     return employeeById
 };
 
-const update = async (id, name) => { 
+const update = async (id, name, email) => { 
     const employeeById = await Employes.findByPk(id);
-    employeeById.update({ name });
+    employeeById.update({ name, email });
     return employeeById
 };
 
