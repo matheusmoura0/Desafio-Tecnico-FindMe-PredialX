@@ -1,8 +1,8 @@
-import cliente_model from "./cliente_model";
-import employe_model from "./empleado_model";
+const cliente_model = require("./clienteModel");
+const employe_model = require("./clienteModel");
 
-export default  (Sequelize, dataTypes) => {
-    const ServiceOrder = Sequelize.define('service_order', {
+module.exports = (sequelize, dataTypes) => {
+    const ServiceOrder = sequelize.define('service_order', {
         id: {
             type: dataTypes.INTEGER,
             primaryKey: true,
@@ -36,8 +36,7 @@ export default  (Sequelize, dataTypes) => {
             allowNull: false
         }
     });
-    ServiceOrder.belongsTo(cliente_model, { foreignKey: 'client_id', as: 'id_client' });
-    ServiceOrder.belongsTo(employe_model, { foreignKey: 'employee_id', as: 'id_employe' });
+
 
 
     return ServiceOrder;

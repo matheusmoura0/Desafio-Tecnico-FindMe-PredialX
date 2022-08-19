@@ -1,5 +1,5 @@
-export default ( Sequelize, dataTypes ) => { 
-    const Employe = Sequelize.define('employe', { 
+module.exports = (sequelize, dataTypes ) => { 
+    const Employe = sequelize.define('employe', { 
         id: { 
             type: dataTypes.INTEGER,
             primaryKey: true,

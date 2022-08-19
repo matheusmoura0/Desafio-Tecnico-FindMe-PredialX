@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.createTable('service_orders', { 
@@ -12,7 +10,6 @@ module.exports = {
       client_id: { 
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: 'clients', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },

@@ -1,28 +1,30 @@
-import cliente_model from "./cliente_model";
+const { Clientes }  =  require('../../database/models/');
+
 
 const create = (nome) => { 
-    return cliente_model.create({ nome });
+    return clienteModel.create({ nome });
 }
 
-const findAll = () => { 
-    return cliente_model.findAll();
+const getAll =  async () => { 
+    const customer = await Clientes.findAll();
+    return customer
 }
 
 const getById = (id) => { 
-    return cliente_model.findByPk(id);
+    return Clientes.findByPk(id);
 }
 
 const update = (id, nome) => { 
-    return cliente_model.update({ nome }, { where: { id } });
+    return Clientes.update({ nome }, { where: { id } });
 }
 
 const deletebyId = (id) => { 
-    return cliente_model.destroy({ where: { id } });
+    return Clientes.destroy({ where: { id } });
 }
 
-export default {
+module.exports = {
     create,
-    findAll,
+    getAll,
     getById,
     update,
     deletebyId
