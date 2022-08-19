@@ -21,6 +21,12 @@ const update = async (id, name, email) => {
     return employeeById
 };
 
+const updatePassword = async (id, password) => { 
+    const employeeById = await Employes.findByPk(id);
+    employeeById.update({ password });
+    return employeeById
+}
+
 const deletebyId =  async (id) => { 
     const employeeById = await Employes.findByPk(id);
     employeeById.destroy({ where: { id } });
@@ -33,5 +39,6 @@ module.exports = {
     getAll,
     getById,
     update,
-    deletebyId
+    deletebyId,
+    updatePassword
 }

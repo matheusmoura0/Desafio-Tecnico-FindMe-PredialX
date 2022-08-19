@@ -38,6 +38,21 @@ const update = async  (req, res) => {
             );
     }
 };
+ 
+const patch = async (req, res) => { 
+    try {
+        const{ id } = req.params;
+        const{ password } = req.body;
+    
+        const employe =  await employeService.updatePassword(id, password);
+    
+        return res.status(200).json(employe);
+    } catch (error) { 
+        return res.status(500).json(
+            { message : 'Erro ao atualizar funcionário'}
+            );
+    }
+}
 
 const deletebyId = async (req, res) => { 
     try {
@@ -58,5 +73,6 @@ module.exports = {
     getAll,
     getById,
     update,
-    deletebyId
+    deletebyId,
+    patch
 }
