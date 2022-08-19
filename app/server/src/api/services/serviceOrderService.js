@@ -32,9 +32,9 @@ const getById = async (id) => {
     return serviceOrderById
 }
 
-const update = async (id, client_id, employe_id, related_problem) => { 
+const update = async (id, client_id, employee_id, related_problem) => { 
     const serviceOrderById = await ServiceOrder.findByPk(id);
-    serviceOrderById.update({ client_id, employe_id, related_problem });
+    serviceOrderById.update({ client_id, employee_id, related_problem });
     return serviceOrderById
 }
 
@@ -42,4 +42,5 @@ module.exports={
     create,
     getAll,
     getById,
+    update,
 }

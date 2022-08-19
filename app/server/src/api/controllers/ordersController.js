@@ -35,7 +35,7 @@ const update = async (req, res) => {
         const{ id } = req.params;
         const{ related_problem, client_id, employee_id } = req.body;
     
-        const order =  await orderService.update(id, {client_id, employee_id, related_problem});
+        const order =  await orderService.update(id, client_id, employee_id, related_problem);
     
         return res.status(200).json(order);
     } catch (error) { 
