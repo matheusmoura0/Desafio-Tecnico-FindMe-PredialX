@@ -19,8 +19,27 @@ const getAll =  async () => ({
     })
 })
 
+const getById = async (id) => { 
+    const serviceOrderById = await ServiceOrder.findByPk(id, { 
+        include: [{
+            model: Clientes,
+            as: 'cliente'
+        }, {
+            model: Employes,
+            as: 'employe'
+        }]
+    });
+    return serviceOrderById
+}
+
+const update = async (id, client_id, employe_id, related_problem) => { 
+    const serviceOrderById = await ServiceOrder.findByPk(id);
+    serviceOrderById.update({ client_id, employe_id, related_problem });
+    return serviceOrderById
+}
 
 module.exports={
     create,
-    getAll
+    getAll,
+    getById,
 }
