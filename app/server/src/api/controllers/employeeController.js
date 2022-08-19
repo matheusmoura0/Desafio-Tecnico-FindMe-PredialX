@@ -7,6 +7,13 @@ const create = async (req, res) => {
     return res.status(201).json(employe);
 }
 
+const getAll =  async (_req, res) => { 
+    const employes =  await employeService.getAll();
+
+    res.status(200).json(employes);
+}
+
 module.exports = {  
-    create
+    create,
+    getAll,
 }

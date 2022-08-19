@@ -11,5 +11,6 @@ router.post("/", [
     employeeValidation.emailValidation,
     employeeValidation.passwordValidation,
     employeeController.create]);
+router.get("/", employeeController.getAll);
 
 module.exports = router;
