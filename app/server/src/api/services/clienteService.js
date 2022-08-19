@@ -21,8 +21,10 @@ const update = async  (id, name) => {
     return customerById
 }
 
-const deletebyId = (id) => { 
-    return Clientes.destroy({ where: { id } });
+const deletebyId =  async (id) => { 
+    const customerById = await Clientes.findByPk(id);
+    customerById.destroy({ where: { id } });
+    return customerById
 }
 
 module.exports = {

@@ -29,11 +29,13 @@ const update = async  (req, res) => {
     return res.status(200).json(cliente);
 }
 
-const deletebyId = (req, res) => { 
+const deletebyId = async (req, res) => { 
     const{ id } = req.params;
-    const cliente = clienteService.deletebyId(id);
+    const cliente = await clienteService.deletebyId(id);
 
-    return res.status(200).json(cliente);
+    return res.status(200).json(
+        { message : 'Cliente deletado com sucesso'}
+    );
 }
 
 module.exports = { 
