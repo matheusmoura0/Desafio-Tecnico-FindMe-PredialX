@@ -1,8 +1,8 @@
-const { Employe }  =  require('../../database/models/');
+const { Employes }  =  require('../../database/models/');
 
 const create = async (name, email, password) => {
-    const employe =  await Employe.create({ name, email, password });
-    return employe
+    const funcionarios =  await Employes.create({ name, email, password });
+    return funcionarios
 }
 
 

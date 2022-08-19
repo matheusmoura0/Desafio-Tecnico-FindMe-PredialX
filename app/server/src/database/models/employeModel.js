@@ -1,12 +1,12 @@
 module.exports = (sequelize, dataTypes ) => { 
-    const Employe = sequelize.define('employe', { 
+    const Employes = sequelize.define('Employes', { 
         id: { 
             type: dataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
             allowNull: false
         },
-        nome: { 
+        name: { 
             type: dataTypes.STRING,
             allowNull: false
         },
@@ -20,6 +20,12 @@ module.exports = (sequelize, dataTypes ) => {
             allowNull: false
         },
         
-    });
-    return Employe;
+        
+    },
+    {
+        timestamps: false,
+    }
+    
+    );
+    return Employes;
 };

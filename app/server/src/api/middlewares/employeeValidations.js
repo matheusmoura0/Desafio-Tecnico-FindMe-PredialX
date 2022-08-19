@@ -55,3 +55,10 @@ const passwordValidation = async (req, res, next) => {
 const existenceCondition = (req, res, next) => { 
     const { id } = req.params; 
 }
+
+module.exports ={
+    nameValidation,
+    emailValidation,
+    passwordValidation,
+    existenceCondition
+}
