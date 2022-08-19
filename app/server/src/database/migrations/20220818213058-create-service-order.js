@@ -1,6 +1,6 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('service_orders', { 
+    await queryInterface.createTable('ServiceOrders', { 
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -10,6 +10,7 @@ module.exports = {
       client_id: { 
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: { model: 'Clientes', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
@@ -22,20 +23,23 @@ module.exports = {
       },
       created_at: { 
         type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now'),
         allowNull: false
       },
       updated_at: { 
         type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now'),
         allowNull: false
       },
       related_problem: { 
         type: Sequelize.STRING,
         allowNull: false
       }
+      
     });
   },
 
-  async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('service_orders');
+  async down (queryInterface, _Sequelize) {
+    await queryInterface.dropTable('ServiceOrders');
   }
 };
