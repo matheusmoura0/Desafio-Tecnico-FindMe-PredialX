@@ -1,8 +1,9 @@
 const { Clientes }  =  require('../../database/models/');
 
 
-const create = (nome) => { 
-    return clienteModel.create({ nome });
+const create = async (nome) => { 
+    const customer =  await Clientes.create({ name: nome });
+    return customer
 }
 
 const getAll =  async () => { 

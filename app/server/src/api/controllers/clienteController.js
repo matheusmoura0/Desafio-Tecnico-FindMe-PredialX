@@ -1,8 +1,8 @@
 const clienteService = require ('../services/clienteService');
 
 const create = async (req, res) => { 
-    const{ nome } = req.body;
-    const cliente = await clienteService.create(nome);
+    const{ name } = req.body;
+    const cliente = await clienteService.create(name);
 
     return res.status(201).json(cliente);
 };
@@ -31,7 +31,7 @@ const update = async  (req, res) => {
 
 const deletebyId = async (req, res) => { 
     const{ id } = req.params;
-    const cliente = await clienteService.deletebyId(id);
+    await clienteService.deletebyId(id);
 
     return res.status(200).json(
         { message : 'Cliente deletado com sucesso'}
