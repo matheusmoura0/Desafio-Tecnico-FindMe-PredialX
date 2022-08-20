@@ -1,6 +1,6 @@
 const orderService = require('../services/serviceOrderService');
 
-const getAll = async (req, res) => { 
+const getAll = async (_req, res) => { 
     const orders =  await orderService.getAll();
 
     res.status(200).json(orders);
@@ -19,6 +19,7 @@ const create = async (req, res) => {
         }
         return res.status(201).json(order);
     } catch (error) { 
+        console.log(error);
         return res.status(500).json(
             { message : 'Erro ao criar pedido'}
             );
