@@ -1,5 +1,5 @@
 module.exports =  (sequelize, DataTypes) => { 
-    const admin = sequelize.define('admin', { 
+    const administrador = sequelize.define('administrador', { 
         id: { 
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -12,8 +12,10 @@ module.exports =  (sequelize, DataTypes) => {
     
     {
         timestamps: false,
+        //prevent sequelize from pluralizing table names
+        freezeTableName: true,
     }
     
     );
-    return admin;
+    return administrador;
 };
