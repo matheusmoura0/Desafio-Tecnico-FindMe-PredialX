@@ -12,6 +12,8 @@ const findOne = async (email, password) => {
         if (isPasswordValid) { 
             const Token = jwt.sign({ id: adminByEmail.id }, secret, { expiresIn: '1h' });
             return { admin: adminByEmail, token: Token };
+        } else { 
+            return { message: 'Senha inválida' };
         }
 }   
 };
