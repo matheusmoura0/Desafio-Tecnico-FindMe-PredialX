@@ -6,6 +6,7 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword , setShowPassword] = useState(false);
+    const [error, setError] = useState(false);
 
     const regexEmail = /\S+@\S+\.\S+/;
     const validEmail = regexEmail.test(email);
@@ -15,8 +16,13 @@ export default function Login() {
             email,
             password
         }
-        const res = await axios.post('http://localhost:3003/admin', data);
-        console.log(res.data);
+        try {
+            const res = await axios.post('http://localhost:3003/admin', data);
+             console.log(res.data);
+        } catch (error) { 
+            setError(true);
+        }
+        
     }
 
   return (
@@ -40,7 +46,11 @@ export default function Login() {
         type='button' 
         disabled={ !validEmail || password.length < 6 }
         onClick={ handleLogin }
-        >Entrar</button>
+        >Entrar
+        </button>
+        <p
+        hidden={ !error }
+        > Dados invalidos </p>
         </Form>
     </Container>
     );
