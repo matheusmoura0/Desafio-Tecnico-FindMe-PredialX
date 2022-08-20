@@ -19,6 +19,7 @@ margin-bottom: 10px;
 `;
 
 const Form = styled.form`
+
 min-height: 30rem;
 min-width: 40rem;
 max-width: 50rem;
