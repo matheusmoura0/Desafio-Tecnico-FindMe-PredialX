@@ -1,12 +1,17 @@
 import {Container, Input, Form} from './Style';
 import { useState } from 'react';
 import axios from 'axios';
+import { setLocalStorage } from '../../helpers/localStorage';
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('admin@admin.com');
+    const [password, setPassword] = useState('senhasupersecreta');
     const [showPassword , setShowPassword] = useState(false);
     const [error, setError] = useState(false);
+
+    const navigate = useNavigate();
+  
 
     const regexEmail = /\S+@\S+\.\S+/;
     const validEmail = regexEmail.test(email);
@@ -17,9 +22,16 @@ export default function Login() {
             password
         }
         try {
-            const res = await axios.post('http://localhost:3003/admin', data);
-             console.log(res.data);
+        const res = await axios.post('http://localhost:3003/admin', data);
+        if (res.data.token) {
+            console.log('salvou');
+            setLocalStorage('token', res.data.token);
+            navigate('/dashboard');
+        }
+        
+
         } catch (error) { 
+            console.log(error);
             setError(true);
         }
         
