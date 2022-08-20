@@ -6,10 +6,11 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const [showPassword , setShowPassword] = useState(false);
 
-
     const regexEmail = /\S+@\S+\.\S+/;
     
     const validEmail = regexEmail.test(email);
+
+
 
 
   return (
@@ -30,7 +31,8 @@ export default function Login() {
             <label>Mostrar Senha</label>
         </div>
         <button type='button' disabled={ !validEmail || password.length < 6 }>Entrar</button>
+        <button type='button' > Registrar </button>
         </Form>
     </Container>
-  )
+    );
 }
