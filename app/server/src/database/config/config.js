@@ -1,13 +1,12 @@
-
-const SQlite = require('sqlite3')
-
+require('dotenv').config();
 module.exports = {
     development: {
-        dialect: 'sqlite',
-        storage: './database/app.sqlite', // or ':memory:'
-        dialectOptions: {
-          // Your sqlite3 options here
-          // for instance, this is how you can configure the database opening mode:
-            mode: SQlite.OPEN_CREATE,
-        },
-}};
+        username: process.env.DB_USER,
+        password: process.env.DB_PWD,
+        database: process.env.DB_NAME,
+        host: process.env.DB_HOST,
+        port: process.env.DB_PORT,
+        dialect: process.env.DB_DIALECT,
+        logging: true
+    },
+};
