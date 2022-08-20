@@ -15,20 +15,23 @@ import{ TableContainer,
     const [orders, setOrders] = useState([]);
     const [showProblem, setShowProblem] = useState(false);
 
+    const getOrders = async () => { 
+        const todos = await axios.get('http://localhost:3003/orders/');
+        setOrders(todos.data);
+      }
+    
+
 
     useEffect(() => { 
-        axios.get('http://localhost:3003/orders')
-        .then(res => {
-            console.log(res.data);
-            setOrders(res.data);
-            console.log(orders.map(order => order.id));
-        }).catch(err => {
-            console.log(err);
-        }).finally(() => {
-            console.log(orders);
-        } )
-    }, [''])
+        getOrders();
+    }, [])
 
+    const handleDelete = async (id) => { 
+        await axios.delete(`http://localhost:3003/orders/${id}`);
+
+        const newOrders = orders.filter(order => order.id !== id);
+        setOrders(newOrders);
+    }
 
   return (
     <TableContainer
@@ -47,8 +50,9 @@ import{ TableContainer,
             </TableRow>
         </TableHead>
         <TableBody>
-            {orders.map(order => (  
-                <TableRow key={order.id}>
+            {orders.map(order => (   
+                <>
+                <TableRow >
                     <TableCell>{order.id}</TableCell>
                     <TableCell>{ !showProblem ?  
                     <button 
@@ -56,9 +60,12 @@ import{ TableContainer,
                     Mostrar Problema </button> : <p> {order.related_problem} <button  onClick={ () => setShowProblem(false)}> Esconder </button> </p> }</TableCell>
                     <TableCell>{order.client_id}</TableCell>
                     <TableCell>{order.employee_id}</TableCell>
-                    <TableCell>{order.created_at}</TableCell>
+                    <TableCell>{order.created_at}</TableCell>                                                                                                                                         
                     <TableCell>{order.updated_at}</TableCell>
+                    <button onClick={ () => (handleDelete(order.id))}> X </button>
+                    <button> Editar </button>
                 </TableRow>
+                </>
             ))}
 
         </TableBody>
