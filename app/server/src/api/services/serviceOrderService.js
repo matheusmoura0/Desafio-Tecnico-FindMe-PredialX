@@ -7,17 +7,10 @@ const create = async (client_id, employe_id, related_problem) => {
     return serviceOrder
 };
 
-const getAll =  async () => ({ 
-    serviceOrders: await ServiceOrder.findAll({ 
-        include: [{
-            model: Clientes,
-            as: 'cliente'
-        }, {
-            model: Employes,
-            as: 'employe'
-        }]
-    })
-});
+const getAll = async () => {
+    const allOrders = await ServiceOrder.findAll();
+    return allOrders;
+}
 
 const getById = async (id) => { 
     const serviceOrderById = await ServiceOrder.findByPk(id, { 
