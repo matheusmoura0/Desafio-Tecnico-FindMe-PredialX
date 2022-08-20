@@ -11,7 +11,7 @@ const nameValidation = async (req, res, next) => {
             );
     }
     next();
-}
+};
 
 const emailValidation = async (req, res, next) => { 
     const { email } = req.body;
@@ -35,7 +35,7 @@ const emailValidation = async (req, res, next) => {
             );
     }
     next();
-}
+};
 
 const passwordValidation = async (req, res, next) => { 
     const { password } = req.body;
@@ -50,15 +50,20 @@ const passwordValidation = async (req, res, next) => {
             );
     }
     next();
-}
+};
 
 const existenceCondition = (req, res, next) => { 
     const { id } = req.params; 
-}
+    if (!id) { 
+        return res.status(400).json(
+            { message : 'Id é obrigatório'}
+            );
+    }
+};
 
 module.exports ={
     nameValidation,
     emailValidation,
     passwordValidation,
     existenceCondition
-}
+};
