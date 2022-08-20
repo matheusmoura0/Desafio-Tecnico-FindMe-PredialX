@@ -38,7 +38,7 @@ const update = async  (req, res) => {
             );
     }
 };
- 
+
 const patch = async (req, res) => { 
     try {
         const{ id } = req.params;
@@ -52,7 +52,7 @@ const patch = async (req, res) => {
             { message : 'Erro ao atualizar funcionário'}
             );
     }
-}
+};
 
 const deletebyId = async (req, res) => { 
     try {
@@ -75,4 +75,4 @@ module.exports = {
     update,
     deletebyId,
     patch
-}
+};

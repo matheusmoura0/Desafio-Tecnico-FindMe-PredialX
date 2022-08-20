@@ -32,9 +32,9 @@ const getById = async (id) => {
     return serviceOrderById
 };
 
-const update = async (id, client_id, employee_id, related_problem) => { 
+const update = async (id, related_problem) => { 
     const serviceOrderById = await ServiceOrder.findByPk(id);
-    serviceOrderById.update({ client_id, employee_id, related_problem });
+    serviceOrderById.update({ related_problem });
     return serviceOrderById
 };
 
