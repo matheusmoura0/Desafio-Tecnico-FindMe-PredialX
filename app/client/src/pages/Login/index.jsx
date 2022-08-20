@@ -1,5 +1,6 @@
 import {Container, Input, Form} from './Style';
 import { useState } from 'react';
+import axios from 'axios';
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -7,11 +8,16 @@ export default function Login() {
     const [showPassword , setShowPassword] = useState(false);
 
     const regexEmail = /\S+@\S+\.\S+/;
-    
     const validEmail = regexEmail.test(email);
-
-
-
+    
+    const handleLogin = async () => { 
+        const data = {
+            email,
+            password
+        }
+        const res = await axios.post('http://localhost:3003/admin', data);
+        console.log(res.data);
+    }
 
   return (
     <Container>
@@ -30,8 +36,11 @@ export default function Login() {
             <input type="checkbox" onChange={ () => setShowPassword(!showPassword) } />
             <label>Mostrar Senha</label>
         </div>
-        <button type='button' disabled={ !validEmail || password.length < 6 }>Entrar</button>
-        <button type='button' > Registrar </button>
+        <button 
+        type='button' 
+        disabled={ !validEmail || password.length < 6 }
+        onClick={ handleLogin }
+        >Entrar</button>
         </Form>
     </Container>
     );
