@@ -9,9 +9,11 @@ import{ TableContainer,
        TableBody, 
        Paper } from '@mui/material';
        import {EditButton, DeleteButton} from './style';
+import EditModal from '../../components/ModalEdit';
 import Modal from '../../components/Modal';
-       
-       
+import DeleteIcon from '@mui/icons-material/Delete';
+import "./style.css";
+
   export default function OrderCard() {
     const [orders, setOrders] = useState([]);
     const [showProblem, setShowProblem] = useState(false);
@@ -51,10 +53,6 @@ const stopEdit = () => {
     getOrders();
 };
 
-const showProblemo = (id) => { 
-    setShowProblem(true);
-    setContent(orders.find(order => order.id === id).related_problem);
-}
 const startEdit = (id) => {
     setEdit(true);
     setContent(orders.find(order => order.id === id).related_problem);
@@ -84,15 +82,15 @@ const startEdit = (id) => {
                 <TableRow >
                     <TableCell>#{order.id}</TableCell>
                     <TableCell>
-                    <Modal classname="modalbu" related_problem={order.related_problem}/>
+                    <Modal related_problem={order.related_problem}/>
                     </TableCell>
                     <TableCell>{order.client_id}</TableCell>
                     <TableCell>{order.employee_id}</TableCell>
                     <TableCell>{order.created_at}</TableCell>                                                                                                                                         
                     <TableCell>{order.updated_at}</TableCell>
-                    <DeleteButton  onClick={ () => (handleDelete(order.id))}> Excluir </DeleteButton>                   
-                    <EditButton onClick={stopEdit}> Editar </EditButton> 
-                    <button onClick={ () => handleEdit(order.id)} hidden={!edit}> Salvar </button>
+                    <DeleteIcon className='deletIcon'  onClick={ () => (handleDelete(order.id))}>  </DeleteIcon>                   
+                    <EditModal editContent={ () => handleEdit(order.related_problem.id)}> dsa </EditModal>
+                    
                 </TableRow>
                 </>
             ))}

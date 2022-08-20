@@ -4,7 +4,7 @@ import "./styles.css";
 import Modal from "react-modal";
 
 
-export default function App({related_problem}) {
+export default function App({related_problem, editContent}) {
     const [isOpen, setIsOpen] = useState(false);
   
     function toggleModal() {
