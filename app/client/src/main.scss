@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap");
+
+.order {
+    display: flex;
+    align-items: center;
+    font-size: 1.25rem;
+    background-color: $dark-light;
+    padding: 10px;
+    border-radius:999px;
+    margin-bottom: 15px;
+    margin-top: 20px;
+    margin-right: 15px;
+    margin-left: 15px;
+    text-align: center;
+  
+    input[type="text"] {
+      background-color: transparent;
+      margin-left: 10px;
+      border: none;
+      font-size: 1.125rem;
+      color: $white;
+      flex-grow: 1;
+  
+      &:focus {
+        outline: none;
+      }
+    }
+}

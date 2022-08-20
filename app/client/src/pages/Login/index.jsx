@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Login() {
     const [email, setEmail] = useState('admin@admin.com');
-    const [password, setPassword] = useState('senhasupersecreta');
+    const [password, setPassword] = useState('12345678');
     const [showPassword , setShowPassword] = useState(false);
     const [error, setError] = useState(false);
 
