@@ -8,7 +8,7 @@ import{ TableContainer,
        TableCell, 
        TableBody, 
        Paper } from '@mui/material';
-       import {ModalS} from './style';
+       import {EditButton, DeleteButton} from './style';
 import Modal from '../../components/Modal';
        
        
@@ -90,20 +90,9 @@ const startEdit = (id) => {
                     <TableCell>{order.employee_id}</TableCell>
                     <TableCell>{order.created_at}</TableCell>                                                                                                                                         
                     <TableCell>{order.updated_at}</TableCell>
-                     {
-                        showProblem ?
-                        <button 
-                        onClick={ () =>startEdit(order.id)}
-                        hidden={!showProblem}> Editar </button> : null
-                     }
-                    <button onClick={ () => (handleDelete(order.id))}> X </button>
-                    
-                    {
-                        edit ? <div>
-                        <button onClick={ () => handleEdit(order.id)} hidden={!edit}> Salvar </button>
-                        <button onClick={stopEdit}> Parar de editar </button> 
-                        </div> : null
-                    }
+                    <DeleteButton  onClick={ () => (handleDelete(order.id))}> Excluir </DeleteButton>                   
+                    <EditButton onClick={stopEdit}> Editar </EditButton> 
+                    <button onClick={ () => handleEdit(order.id)} hidden={!edit}> Salvar </button>
                 </TableRow>
                 </>
             ))}
