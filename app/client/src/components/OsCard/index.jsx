@@ -9,7 +9,6 @@ TableCell,
 TableBody, 
 Paper,
 TablePagination,
-TableSortLabel
 } from '@mui/material';
 import {RedirectButton} from './style';
 import EditModal from '../../components/ModalEdit';

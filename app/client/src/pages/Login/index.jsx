@@ -41,11 +41,13 @@ export default function Login() {
     <Container>
         <Form>
         <Input 
+        value={email}
         type="text" 
         onChange={ (e) => setEmail(e.target.value) }
         placeholder="Email" 
         />
         <Input 
+        value={password}
         type={ showPassword ? 'text' : 'password' }
         onChange={ (e) => setPassword(e.target.value) }
         placeholder="Senha" 

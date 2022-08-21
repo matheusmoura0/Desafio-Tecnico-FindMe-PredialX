@@ -51,6 +51,7 @@ useEffect(() => {
           <label htmlFor="editOS">
             <h2>Editar problema</h2>
         <Input 
+        placeholder="Digite o problema"
         onChange={(e) => setContent(e.target.value)}
         type='text'>
           
