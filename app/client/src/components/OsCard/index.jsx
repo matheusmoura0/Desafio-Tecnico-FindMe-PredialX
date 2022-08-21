@@ -59,6 +59,11 @@ import { useNavigate } from "react-router-dom";
           >
             Criar Ordem de Serviço
           </RedirectButton>
+          <RedirectButton
+          onClick={ () => navigate('/registerCustomer') }
+          >
+            Registar Cliente
+          </RedirectButton>
       </><TableContainer
           component={Paper}
       >

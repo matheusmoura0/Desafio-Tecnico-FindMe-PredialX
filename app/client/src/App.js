@@ -2,6 +2,7 @@ import React from 'react';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
+import RegisterCustomer from './pages/RegisterCustomer';
 import { Routes, Route } from 'react-router-dom';
 
 
@@ -19,6 +20,10 @@ function App() {
       <Route
         path="/dashboard"
         element={<Dashboard />}
+      />
+      <Route
+        path="/registerCustomer"
+        element={<RegisterCustomer />}
       />
       </Routes>
 
