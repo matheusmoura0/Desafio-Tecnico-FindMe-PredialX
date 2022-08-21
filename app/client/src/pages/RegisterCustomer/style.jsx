@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const Button = styled.button`
+    margin-top: 20px;
     background: #4caf50;
     color: #fff;
     border: none;
@@ -21,6 +22,18 @@ const Button = styled.button`
     }
 `;
 
+
+const Input = styled.input`
+    margin-top: 20px;
+    width: 80%;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 0 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    margin-left: 50px;
+`;
 
 const Container = styled.div`
     width: 100vw;
@@ -53,4 +66,4 @@ const Title = styled.h1`
 `;
 
 
-export { Button, Container, Form, Title };
+export { Button, Container, Form, Title, Input };
