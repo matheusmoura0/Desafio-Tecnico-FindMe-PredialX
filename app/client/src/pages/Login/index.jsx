@@ -1,4 +1,4 @@
-import {Container, Input, Form} from './Style';
+import {Container, Input, Form, LoginButton} from './Style';
 import { useState } from 'react';
 import axios from 'axios';
 import { setLocalStorage } from '../../helpers/localStorage';
@@ -52,16 +52,16 @@ export default function Login() {
         onChange={ (e) => setPassword(e.target.value) }
         placeholder="Senha" 
         />
+        <LoginButton 
+        type='LoginButton' 
+        disabled={ !validEmail || password.length < 6 }
+        onClick={ handleLogin }
+        >Entrar
+        </LoginButton>
         <div>
             <input type="checkbox" onChange={ () => setShowPassword(!showPassword) } />
             <label>Mostrar Senha</label>
         </div>
-        <button 
-        type='button' 
-        disabled={ !validEmail || password.length < 6 }
-        onClick={ handleLogin }
-        >Entrar
-        </button>
         <p
         hidden={ !error }
         > Dados invalidos </p>

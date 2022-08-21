@@ -34,8 +34,27 @@ border:1px solid #ccc;
 background: whitesmooke;
 `
 
+const LoginButton = styled.button`  
+width: 80%;
+height: 40px;
+border-radius: 5px;
+border: 1px solid #ccc;
+padding: 0 10px;
+font-size: 16px;
+margin-bottom: 10px;
+    &&:hover { 
+        background: #ccc;
+        transition: 0.5s;
+    }
+&&:disabled { 
+    background: #ccc;
+}
+`;
+
+
 export {
     Container,
     Input,
-    Form
+    Form,
+    LoginButton
 }
