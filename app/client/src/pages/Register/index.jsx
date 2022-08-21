@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {Input} from './style';
 
 export default function Register() {
@@ -8,11 +8,11 @@ export default function Register() {
       <Input >
       
        </Input>
-       <h4> Id do Cliente </h4>
+       <h4> Id do Cliente: </h4>
       <Input >
       
        </Input>
-       <h4> Id do Colaborador </h4>
+       <h4> Id do Colaborador: </h4>
       <Input >
       
        </Input>

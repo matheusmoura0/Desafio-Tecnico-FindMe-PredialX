@@ -7,7 +7,9 @@ import{ TableContainer,
        TableRow, 
        TableCell, 
        TableBody, 
-       Paper } from '@mui/material';
+       Paper,
+       TablePagination
+     } from '@mui/material';
        import {RedirectButton} from './style';
 import EditModal from '../../components/ModalEdit';
 import Modal from '../../components/Modal';
@@ -18,9 +20,18 @@ import { useNavigate } from "react-router-dom";
 
   export default function OrderCard() {
     const [orders, setOrders] = useState([]);
-    const [showProblem, setShowProblem] = useState(false);
+    const [page, setPage] = useState(0);
     const [content, setContent] = useState(orders.related_problem);
-    const [edit, setEdit] = useState(false);
+    const [rowsPerPage, setRowsPerPage] = useState(false);
+
+    const hadleChangePage = (event, newPage) => { 
+        setPage(newPage);
+    }
+
+    const handleChangeRowsPerPage = event => { 
+        setRowsPerPage(parseInt(event.target.value, 10));
+        setPage(0);
+    }
 
 const navigate = useNavigate();
 
@@ -41,25 +52,13 @@ const handleDelete = async (id) => {
 
 
 const handleEdit = async (id) => {    
-     setEdit(true);
-     await axios.put(`http://localhost:3003/orders/${id}`, { related_problem: content});
-     
-;
+
 
         getOrders();
         
     };
 
 
-const stopEdit = () => { 
-    setEdit(false);
-    getOrders();
-};
-
-const startEdit = (id) => {
-    setEdit(true);
-    setContent(orders.find(order => order.id === id).related_problem);
-}
 
 
   return ( 
@@ -72,9 +71,8 @@ const startEdit = (id) => {
       </><TableContainer
           component={Paper}
       >
-
-
-              <Table aria-label="simple table">
+            <Paper>
+              <Table>
                   <TableHead>
                       <TableRow>
                           <TableCell>ID</TableCell>
@@ -86,7 +84,8 @@ const startEdit = (id) => {
                       </TableRow>
                   </TableHead>
                   <TableBody>
-                      {orders.map(order => (
+                      {orders.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage )
+                      .map((order => (
                           <>
                               <TableRow>
                                   <TableCell>#{order.id}</TableCell>
@@ -102,10 +101,22 @@ const startEdit = (id) => {
 
                               </TableRow>
                           </>
-                      ))}
+                      )))}
 
                   </TableBody>
               </Table>
+            </Paper>
+              <TablePagination
+                rowsPerPageOptions={[ 5, 10, 25]}
+                count={orders.length}
+                rowsPerPage={rowsPerPage}
+                page={page}
+                onPageChange={hadleChangePage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+                labelRowsPerPage='Linhas por página'
+                labelDisplayedRows={({ from, to, count }) => `${from}-${to} de ${count}`}
+                backIconButtonText='Anterior'
+            />
           </TableContainer></>
   )
 }
