@@ -56,14 +56,17 @@ useEffect(() => {
           
         </Input>
 
-        <select onChange={(e) => setId(e.target.value)} >
+        <select
+        className="select"
+        onChange={(e) => setId(e.target.value)} >
+          <option>Selecione o Id da OS </option>
           {dropdown.map(id => (
             <option key={id} value={id}>
               {id}
             </option>
           ))}
         </select>
-        <SaveIcon onClick={ () => updateContent(id, content)} className="SaveIcon"/>   
+        <SaveIcon onClick={ () => updateContent(id, content)} className="Saveicon"/>   
         </label>
           <p className="problem">{related_problem}</p>
           <button className="modalButton" onClick={toggleModal}> X </button>

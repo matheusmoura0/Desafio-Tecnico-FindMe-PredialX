@@ -31,7 +31,7 @@ import { useNavigate } from "react-router-dom";
       };
     useEffect(() => { 
       getOrders();
-  }, [getOrders()])
+  }, [])
   
 
     const hadleChangePage = (event, newPage) => { 
@@ -52,6 +52,7 @@ import { useNavigate } from "react-router-dom";
       };
 
   return ( 
+    <div>
     <><>
           <RedirectButton
           onClick={ () => navigate('./register') }
@@ -101,12 +102,9 @@ import { useNavigate } from "react-router-dom";
                                   <TableCell>{order.created_at}</TableCell>
                                   <TableCell>{order.updated_at}</TableCell>
                                   <DeleteIcon className='deletIcon' onClick={() => (handleDelete(order.id))}>  </DeleteIcon>
-                                  <EditModal/>
-
                               </TableRow>
                           </>
                       )))}
-
                   </TableBody>
               </Table>
             </Paper>
@@ -121,5 +119,10 @@ import { useNavigate } from "react-router-dom";
                 labelDisplayedRows={({ from, to, count }) => `${from}-${to} de ${count}`}
             />
           </TableContainer></>
+
+          
+        <EditModal className='Editmodal'/>
+          </div>
+          
   )
 }

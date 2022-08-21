@@ -49,4 +49,18 @@ const RedirectButton = styled.button`
     }
 `;
 
+const dropdown = styled.select`
+    margin-top: 20px;
+    width: 80%;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 0 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    select {
+        
+`;
+
+
 export { EditButton, DeleteButton, RedirectButton };

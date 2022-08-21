@@ -1,0 +1,31 @@
+.select {
+    width: 190px;
+    height: 40px;
+    border: none;
+    border-radius: 0;
+    background-color: #fff;
+    color: #000;
+    font-size: 1em;
+    margin-left: 10px;
+}
+.select:focus {
+    outline: none;
+}
+
+.Saveicon {
+    margin-left: 10px;
+    float: left;
+    margin-top: 10%;
+    top: 0;
+    right: 0;
+    width: 2rem;
+    height: 2rem;
+    background: #fff;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    border-radius: 40px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+}

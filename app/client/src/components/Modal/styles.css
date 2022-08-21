@@ -1,8 +1,3 @@
-.App {
-    font-family: sans-serif;
-    text-align: bottom;
-  }
-  
   .mymodal {
     text-align: center;
     width: 50%;
@@ -82,15 +77,22 @@
   }
 
   .editpen {
-    margin-top: 20%;
+    float: right;
+    height: 100%;
     width: 100%;
     top: 0;
     right: 0;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 4rem;
+    height: 4rem;
     background: #fff;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
+    border-radius: 40px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    margin-top: 30px;
 }
 .editpen:hover {
     background: #4CAF50;
@@ -114,3 +116,4 @@
     transition: all 0.2s ease-in-out;
     cursor: pointer;   
 }
+
