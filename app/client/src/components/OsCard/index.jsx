@@ -2,15 +2,16 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import{ TableContainer,
-     Table,
-      TableHead,
-       TableRow, 
-       TableCell, 
-       TableBody, 
-       Paper,
-       TablePagination
-     } from '@mui/material';
-       import {RedirectButton} from './style';
+Table,
+TableHead,
+TableRow, 
+TableCell, 
+TableBody, 
+Paper,
+TablePagination,
+TableSortLabel
+} from '@mui/material';
+import {RedirectButton} from './style';
 import EditModal from '../../components/ModalEdit';
 import Modal from '../../components/Modal';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -20,9 +21,18 @@ import { useNavigate } from "react-router-dom";
 
   export default function OrderCard() {
     const [orders, setOrders] = useState([]);
-    const [page, setPage] = useState(0);
-    const [content, setContent] = useState(orders.related_problem);
-    const [rowsPerPage, setRowsPerPage] = useState(false);
+    const [page, setPage] = useState(0);;
+    const [rowsPerPage, setRowsPerPage] = useState(5);
+    const navigate = useNavigate();
+    
+    const getOrders = async () => { 
+        const orders = await axios.get('http://localhost:3003/orders/');
+        setOrders(orders.data);
+      };
+    useEffect(() => { 
+      getOrders();
+  }, [getOrders()])
+  
 
     const hadleChangePage = (event, newPage) => { 
         setPage(newPage);
@@ -33,33 +43,13 @@ import { useNavigate } from "react-router-dom";
         setPage(0);
     }
 
-const navigate = useNavigate();
 
-const getOrders = async () => { 
-        const orders = await axios.get('http://localhost:3003/orders/');
-        setOrders(orders.data);
-      };
 
-    useEffect(() => { 
-        getOrders();
-    }, [])
-
-const handleDelete = async (id) => { 
+    const handleDelete = async (id) => { 
         await axios.delete(`http://localhost:3003/orders/${id}`);
         const newOrders = orders.filter(order => order.id !== id);
         setOrders(newOrders);
-    };
-
-
-const handleEdit = async (id) => {    
-
-
-        getOrders();
-        
-    };
-
-
-
+      };
 
   return ( 
     <><>
@@ -75,11 +65,25 @@ const handleEdit = async (id) => {
               <Table>
                   <TableHead>
                       <TableRow>
-                          <TableCell>ID</TableCell>
-                          <TableCell>Problema relatado </TableCell>
-                          <TableCell>Id do cliente</TableCell>
-                          <TableCell>Id do colaborador</TableCell>
-                          <TableCell>Data de Criação</TableCell>
+                          <TableCell
+                          
+                          >ID</TableCell>
+                          <TableCell>
+                            Problema relatado 
+                            </TableCell>
+                            <TableSortLabel>
+                          <TableCell>
+                            Id do cliente
+                            </TableCell>
+                            </TableSortLabel>
+                            <TableSortLabel>
+                          <TableCell>
+                            Id do colaborador
+                            </TableCell>
+                            </TableSortLabel>
+                          <TableCell>
+                            Data de Criação
+                            </TableCell>
                           <TableCell>Data da Ultima atualização</TableCell>
                       </TableRow>
                   </TableHead>
@@ -97,7 +101,7 @@ const handleEdit = async (id) => {
                                   <TableCell>{order.created_at}</TableCell>
                                   <TableCell>{order.updated_at}</TableCell>
                                   <DeleteIcon className='deletIcon' onClick={() => (handleDelete(order.id))}>  </DeleteIcon>
-                                  <EditModal editContent={() => handleEdit(order.related_problem.id)}> dsa </EditModal>
+                                  <EditModal/>
 
                               </TableRow>
                           </>
@@ -115,7 +119,6 @@ const handleEdit = async (id) => {
                 onRowsPerPageChange={handleChangeRowsPerPage}
                 labelRowsPerPage='Linhas por página'
                 labelDisplayedRows={({ from, to, count }) => `${from}-${to} de ${count}`}
-                backIconButtonText='Anterior'
             />
           </TableContainer></>
   )

@@ -21,16 +21,16 @@ const updateContent = async (id, content) => {
 }
 
 
-const getProblemid = async () => { 
+const getProblemId = async () => { 
   const orders = await axios.get('http://localhost:3003/orders/');
-  const id = orders.data.map(order => order.id);
+  const id = orders.data.map((order => order.id));
   setDropdown(id);
 };
 
 
 useEffect(() => { 
-  getProblemid();
-}, [])
+  getProblemId();
+},[])
   
     function toggleModal() {
       setIsOpen(!isOpen);
