@@ -34,4 +34,19 @@ const DeleteButton = styled.button`
     }
 `;
 
-export { EditButton, DeleteButton };
+const RedirectButton = styled.button`
+    background: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    &:hover {
+        background: #43a047;
+    }
+`;
+
+export { EditButton, DeleteButton, RedirectButton };

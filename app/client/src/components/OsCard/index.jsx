@@ -8,11 +8,13 @@ import{ TableContainer,
        TableCell, 
        TableBody, 
        Paper } from '@mui/material';
-       import {EditButton, DeleteButton} from './style';
+       import {RedirectButton} from './style';
 import EditModal from '../../components/ModalEdit';
 import Modal from '../../components/Modal';
 import DeleteIcon from '@mui/icons-material/Delete';
 import "./style.css";
+import { useNavigate } from "react-router-dom";
+
 
   export default function OrderCard() {
     const [orders, setOrders] = useState([]);
@@ -20,6 +22,7 @@ import "./style.css";
     const [content, setContent] = useState(orders.related_problem);
     const [edit, setEdit] = useState(false);
 
+const navigate = useNavigate();
 
 const getOrders = async () => { 
         const orders = await axios.get('http://localhost:3003/orders/');
@@ -59,44 +62,50 @@ const startEdit = (id) => {
 }
 
 
-  return (
-    <TableContainer
-    component={Paper}
-    >
-        
+  return ( 
+    <><>
+          <RedirectButton
+          onClick={ () => navigate('./register') }
+          >
+            Criar Ordem de Serviço
+          </RedirectButton>
+      </><TableContainer
+          component={Paper}
+      >
 
-    <Table aria-label="simple table">
-        <TableHead>
-            <TableRow>
-                <TableCell>ID</TableCell>
-                <TableCell>Problema relatado </TableCell>
-                <TableCell>Id do cliente</TableCell>
-                <TableCell>Id do colaborador</TableCell>
-                <TableCell>Data de Criação</TableCell>
-                <TableCell>Data da Ultima atualização</TableCell>
-            </TableRow>
-        </TableHead>
-        <TableBody>
-            {orders.map(order => (   
-                <>
-                <TableRow >
-                    <TableCell>#{order.id}</TableCell>
-                    <TableCell>
-                    <Modal related_problem={order.related_problem}/>
-                    </TableCell>
-                    <TableCell>{order.client_id}</TableCell>
-                    <TableCell>{order.employee_id}</TableCell>
-                    <TableCell>{order.created_at}</TableCell>                                                                                                                                         
-                    <TableCell>{order.updated_at}</TableCell>
-                    <DeleteIcon className='deletIcon'  onClick={ () => (handleDelete(order.id))}>  </DeleteIcon>                   
-                    <EditModal editContent={ () => handleEdit(order.related_problem.id)}> dsa </EditModal>
-                    
-                </TableRow>
-                </>
-            ))}
 
-        </TableBody>
-    </Table>
-    </TableContainer>
+              <Table aria-label="simple table">
+                  <TableHead>
+                      <TableRow>
+                          <TableCell>ID</TableCell>
+                          <TableCell>Problema relatado </TableCell>
+                          <TableCell>Id do cliente</TableCell>
+                          <TableCell>Id do colaborador</TableCell>
+                          <TableCell>Data de Criação</TableCell>
+                          <TableCell>Data da Ultima atualização</TableCell>
+                      </TableRow>
+                  </TableHead>
+                  <TableBody>
+                      {orders.map(order => (
+                          <>
+                              <TableRow>
+                                  <TableCell>#{order.id}</TableCell>
+                                  <TableCell>
+                                      <Modal related_problem={order.related_problem} />
+                                  </TableCell>
+                                  <TableCell>{order.client_id}</TableCell>
+                                  <TableCell>{order.employee_id}</TableCell>
+                                  <TableCell>{order.created_at}</TableCell>
+                                  <TableCell>{order.updated_at}</TableCell>
+                                  <DeleteIcon className='deletIcon' onClick={() => (handleDelete(order.id))}>  </DeleteIcon>
+                                  <EditModal editContent={() => handleEdit(order.related_problem.id)}> dsa </EditModal>
+
+                              </TableRow>
+                          </>
+                      ))}
+
+                  </TableBody>
+              </Table>
+          </TableContainer></>
   )
 }
