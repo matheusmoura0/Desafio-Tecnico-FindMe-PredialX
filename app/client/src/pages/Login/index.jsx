@@ -53,14 +53,15 @@ export default function Login() {
         placeholder="Senha" 
         />
         <LoginButton 
-        type='LoginButton' 
+        type='button' 
         disabled={ !validEmail || password.length < 6 }
         onClick={ handleLogin }
         >Entrar
         </LoginButton>
         <div>
-            <input type="checkbox" onChange={ () => setShowPassword(!showPassword) } />
-            <label>Mostrar Senha</label>
+            <label htmlFor='showpassword'> 
+            <input id='showpassword' type="checkbox" onChange={ () => setShowPassword(!showPassword) } />
+            </label>Mostrar senha
         </div>
         <p
         hidden={ !error }
