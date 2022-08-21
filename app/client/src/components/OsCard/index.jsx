@@ -17,6 +17,7 @@ import Modal from '../../components/Modal';
 import DeleteIcon from '@mui/icons-material/Delete';
 import "./style.css";
 import { useNavigate } from "react-router-dom";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 
   export default function OrderCard() {
@@ -130,7 +131,10 @@ import { useNavigate } from "react-router-dom";
             />
           </TableContainer></>
 
-          
+        <LogoutIcon 
+        className='logoutIcon'
+        onClick={ () => navigate('/') }
+        />
         <EditModal className='Editmodal'/>
           </div>
           
