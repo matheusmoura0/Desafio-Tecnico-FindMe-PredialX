@@ -83,16 +83,12 @@ import LogoutIcon from '@mui/icons-material/Logout';
                           <TableCell>
                             Problema relatado 
                             </TableCell>
-                            <TableSortLabel>
                           <TableCell>
                             Id do cliente
                             </TableCell>
-                            </TableSortLabel>
-                            <TableSortLabel>
                           <TableCell>
                             Id do colaborador
                             </TableCell>
-                            </TableSortLabel>
                           <TableCell>
                             Data de Criação
                             </TableCell>

@@ -11,6 +11,9 @@ const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
+  const regexEmail = /\S+@\S+\.\S+/;
+  const validEmail = regexEmail.test(email);
+
   const register = async () => { 
     const data = {
       name,
@@ -38,6 +41,7 @@ const [password, setPassword] = useState('');
             placeholder="Senha" />
 
             <Button 
+            disbled={!validEmail || password.length < 6}
             type="button"
             onClick={() => {register()} }>Cadastrar</Button>
             </div>
