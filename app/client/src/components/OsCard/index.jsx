@@ -64,6 +64,11 @@ import { useNavigate } from "react-router-dom";
           >
             Registar Cliente
           </RedirectButton>
+          <RedirectButton
+          onClick={ () => navigate('/registerEmployee') }
+          >
+            Registrar colaborador
+          </RedirectButton>
       </><TableContainer
           component={Paper}
       >

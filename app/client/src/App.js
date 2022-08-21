@@ -3,6 +3,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import RegisterCustomer from './pages/RegisterCustomer';
+import RegisterEmployee from './pages/RegisterEmployee';
 import { Routes, Route } from 'react-router-dom';
 
 
@@ -24,6 +25,10 @@ function App() {
       <Route
         path="/registerCustomer"
         element={<RegisterCustomer />}
+      />
+      <Route
+        path="/registerEmployee"
+        element={<RegisterEmployee />}
       />
       </Routes>
 
