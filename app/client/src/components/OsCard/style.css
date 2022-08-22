@@ -35,3 +35,11 @@
     font-weight: italic;
     color: rgb(151, 149, 149);
 }
+
+.ordenation {
+    float: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}

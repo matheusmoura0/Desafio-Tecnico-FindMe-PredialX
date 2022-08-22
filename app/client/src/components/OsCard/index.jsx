@@ -18,15 +18,8 @@ import "./style.css";
 import { useNavigate } from "react-router-dom";
 import LogoutIcon from '@mui/icons-material/Logout';
 import SortIcon from '@mui/icons-material/Sort';
+import SortByAlphaIcon from '@mui/icons-material/SortByAlpha';
 
-const localeCompare = (a, b) => { 
-  if (a.id < b.id) {
-    return -1;
-  } if (a.id > b.id) {
-    return 1;
-  }
-  return 0;
-}
 
 
   export default function OrderCard() {
@@ -65,6 +58,42 @@ const localeCompare = (a, b) => {
     }
     console.log(orders);
   }
+
+  const sortcliente = (order) => { 
+    if (order === 'ASC') {
+      const sorted = [...orders].sort((a, b) =>
+        a.cliente.name.toLowerCase() > b.cliente.name.toLowerCase() ? 1 : -1 
+      )
+      setOrders(sorted);
+      setOrder('DESC');
+  }
+  if (order === 'DESC') { 
+    const sorted = [...orders].sort((a, b) =>
+    b.cliente.name.toLowerCase() > a.cliente.name.toLowerCase() ? 1 : -1 
+    )
+    setOrders(sorted);
+    setOrder('ASC');
+  }
+  console.log(orders);
+}
+
+const sortcolaborador = (order) => { 
+  if (order === 'ASC') {
+    const sorted = [...orders].sort((a, b) =>
+      a.employe.name.toLowerCase() > b.employe.name.toLowerCase() ? 1 : -1 
+    )
+    setOrders(sorted);
+    setOrder('DESC');
+}
+if (order === 'DESC') { 
+  const sorted = [...orders].sort((a, b) =>
+  b.employe.name.toLowerCase() > a.employe.name.toLowerCase() ? 1 : -1 
+  )
+  setOrders(sorted);
+  setOrder('ASC');
+}
+console.log(orders);
+}
 
     const navigate = useNavigate();
     
@@ -112,7 +141,12 @@ const localeCompare = (a, b) => {
           >
             Registrar colaborador
           </RedirectButton>
-          <SortIcon  onClick={() => sortcreated_at(order)} > Ordenar mais {} </SortIcon>
+          <SortIcon className='ordenation' onClick={() => sortcreated_at(order)} >  </SortIcon>
+          <SortByAlphaIcon className='ordenation'
+          onClick={ () => sortcliente(order)}
+          />
+          <SortByAlphaIcon className='ordenation2'
+          onClick={ () => sortcolaborador(order)}/>
       </><TableContainer
           component={Paper}
       >
