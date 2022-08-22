@@ -1,8 +1,8 @@
 const { Clientes }  = require("./clienteModel");
-const { Employes } = require("./employeModel");
+const { Colaboradores } = require("./employeModel");
 
 module.exports = (sequelize, dataTypes) => {
-    const ServiceOrder = sequelize.define('ServiceOrder', {
+    const OrderDeServiço = sequelize.define('OrderDeServiço', {
         id: {
             type: dataTypes.INTEGER,
             primaryKey: true,
@@ -19,7 +19,7 @@ module.exports = (sequelize, dataTypes) => {
         employee_id: {
             type: dataTypes.INTEGER,
             allowNull: false,
-            references: { model: 'Employes', key: 'id' },
+            references: { model: 'Colaboradores', key: 'id' },
             onUpdate: 'CASCADE',
             onDelete: 'CASCADE'
         },
@@ -42,19 +42,19 @@ module.exports = (sequelize, dataTypes) => {
 
 
 
-    ServiceOrder.associate = (models) => { 
-        ServiceOrder.belongsTo(models.Clientes, {
+    OrderDeServiço.associate = (models) => { 
+        OrderDeServiço.belongsTo(models.Clientes, {
             foreignKey: 'client_id',
             as: 'cliente',
             onDelete: 'CASCADE'
         });
-        ServiceOrder.belongsTo(models.Employes, {
+        OrderDeServiço.belongsTo(models.Colaboradores, {
             foreignKey: 'employee_id',
             as: 'employe',
             onDelete: 'CASCADE'
         });
     }
 
-    return ServiceOrder;
+    return OrderDeServiço;
     
 }

@@ -1,8 +1,15 @@
 require('dotenv').config();
+
 const clientRouter = require('./routes/cliente_router');
 const employeeRouter = require('./routes/employeeRouter');
 const orderRouter = require('./routes/orderRouter');
 const adminRouter = require('./routes/adminRouter');
+const { initialize } = require('./initialize')
+
+
+initialize();
+
+
 
 const express = require('express');
 const cors = require('cors');
