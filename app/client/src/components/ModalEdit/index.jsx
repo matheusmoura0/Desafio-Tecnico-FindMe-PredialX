@@ -23,8 +23,7 @@ const updateContent = async (id, content) => {
 
 const getProblemId = async () => { 
   const orders = await axios.get('http://localhost:3003/orders/');
-  const id = orders.data.map((order => order.id));
-  setDropdown(id);
+  setDropdown(orders.data);
 };
 
 
@@ -61,10 +60,8 @@ useEffect(() => {
         className="select"
         onChange={(e) => setId(e.target.value)} >
           <option>Selecione o Id da OS </option>
-          {dropdown.map(id => (
-            <option key={id} value={id}>
-              {id}
-            </option>
+          {dropdown.map(order => ( 
+            <option key={order.id} value={[order.id, order.cliente.name]} >{`#${order.id}: ${order.cliente.name}` }</option>
           ))}
         </select>
         <SaveIcon onClick={ () => updateContent(id, content)} className="Saveicon"/>   
