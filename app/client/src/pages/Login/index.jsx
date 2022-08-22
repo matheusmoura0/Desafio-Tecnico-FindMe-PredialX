@@ -40,6 +40,10 @@ export default function Login() {
   return (
     <Container>
         <Form>
+            <img
+                src='https://media.discordapp.net/attachments/779206258082185217/1011048680486346944/unknown.png'
+                alt='logo'
+            />
         <Input 
         value={email}
         type="text" 

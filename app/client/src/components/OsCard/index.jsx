@@ -83,10 +83,10 @@ import LogoutIcon from '@mui/icons-material/Logout';
                             Problema relatado 
                             </TableCell>
                           <TableCell>
-                            Id do cliente
+                           cliente
                             </TableCell>
                           <TableCell>
-                            Id do colaborador
+                           colaborador
                             </TableCell>
                           <TableCell>
                             Data de Criação
@@ -103,8 +103,13 @@ import LogoutIcon from '@mui/icons-material/Logout';
                                   <TableCell>
                                       <Modal related_problem={order.related_problem} />
                                   </TableCell>
-                                  <TableCell>{order.client_id}</TableCell>
-                                  <TableCell>{order.employee_id}</TableCell>
+                                  <TableCell>
+                                    {order.cliente.name}
+                                    <p className='pId'> ID:#{ order.client_id } </p>
+                                  </TableCell>
+                                  <TableCell>{order.employe.name}
+                                    <p className='pId'>ID:#{ order.employee_id }</p>
+                                  </TableCell>
                                   <TableCell>{order.created_at}</TableCell>
                                   <TableCell>{order.updated_at}</TableCell>
                                   <DeleteIcon className='deletIcon' onClick={() => (handleDelete(order.id))}>  </DeleteIcon>
