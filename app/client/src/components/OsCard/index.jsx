@@ -17,12 +17,54 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import "./style.css";
 import { useNavigate } from "react-router-dom";
 import LogoutIcon from '@mui/icons-material/Logout';
+import SortIcon from '@mui/icons-material/Sort';
+
+const localeCompare = (a, b) => { 
+  if (a.id < b.id) {
+    return -1;
+  } if (a.id > b.id) {
+    return 1;
+  }
+  return 0;
+}
 
 
   export default function OrderCard() {
     const [orders, setOrders] = useState([]);
-    const [page, setPage] = useState(0);;
+    const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
+    const [order, setOrder] = useState('DESC');
+
+    const sorting = (order) => { 
+      if (order === 'ASC') {
+        const sorted = orders.sort((a, b) => a.id - b.id);
+        setOrders(sorted);
+        setOrder('DESC');
+      } if (order === 'DESC') { 
+        const sorted = orders.sort((a, b) => b.id - a.id);
+        setOrders(sorted);
+        setOrder('ASC');
+      }
+      console.log(orders);
+    }
+
+      const sortcreated_at = (order) => { 
+      if (order === 'ASC') {
+        const sorted = [...orders].sort((a, b) =>
+          a.created_at.toLowerCase() > b.created_at.toLowerCase() ? 1 : -1 
+        )
+        setOrders(sorted);
+        setOrder('DESC');
+    }
+    if (order === 'DESC') { 
+      const sorted = [...orders].sort((a, b) =>
+      a.created_at.toLowerCase() > b.created_at.toLowerCase() ? 1 : -1 
+      )
+      setOrders(sorted);
+      setOrder('ASC');
+    }
+  }
+
     const navigate = useNavigate();
     
     const getOrders = async () => { 
@@ -69,6 +111,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
           >
             Registrar colaborador
           </RedirectButton>
+          <SortIcon  onClick={() => sortcreated_at(order)} > Ordenar mais {} </SortIcon>
       </><TableContainer
           component={Paper}
       >
@@ -77,7 +120,6 @@ import LogoutIcon from '@mui/icons-material/Logout';
                   <TableHead>
                       <TableRow>
                           <TableCell
-                          
                           >ID</TableCell>
                           <TableCell>
                             Problema relatado 
@@ -88,10 +130,6 @@ import LogoutIcon from '@mui/icons-material/Logout';
                           <TableCell>
                            colaborador
                             </TableCell>
-                          <TableCell>
-                            Data de Criação
-                            </TableCell>
-                          <TableCell>Data da Ultima atualização</TableCell>
                       </TableRow>
                   </TableHead>
                   <TableBody>
@@ -105,13 +143,11 @@ import LogoutIcon from '@mui/icons-material/Logout';
                                   </TableCell>
                                   <TableCell>
                                     {order.cliente.name}
-                                    <p className='pId'> ID:#{ order.client_id } </p>
+                                    <p> ID:#{ order.client_id } </p>
                                   </TableCell>
                                   <TableCell>{order.employe.name}
                                     <p className='pId'>ID:#{ order.employee_id }</p>
                                   </TableCell>
-                                  <TableCell>{order.created_at}</TableCell>
-                                  <TableCell>{order.updated_at}</TableCell>
                                   <DeleteIcon className='deletIcon' onClick={() => (handleDelete(order.id))}>  </DeleteIcon>
                               </TableRow>
                           </>
