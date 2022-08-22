@@ -58,11 +58,12 @@ const localeCompare = (a, b) => {
     }
     if (order === 'DESC') { 
       const sorted = [...orders].sort((a, b) =>
-      a.created_at.toLowerCase() > b.created_at.toLowerCase() ? 1 : -1 
+      b.created_at.toLowerCase() > a.created_at.toLowerCase() ? 1 : -1 
       )
       setOrders(sorted);
       setOrder('ASC');
     }
+    console.log(orders);
   }
 
     const navigate = useNavigate();
