@@ -4,6 +4,9 @@
   "description": "",
   "main": "/api/index.js",
   "scripts": {
+    "start": "node ./src/api/index.js",
+    "compose:down": "(cd app && docker-compose down --remove-orphans)",
+    "compose:up": "(cd app && docker-compose up -d --build)",
     "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "dev": "nodemon ./src/api/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,7 +24,6 @@
     "mysql2": "^2.3.3",
     "node": "^16.17.0",
     "nodemon": "^2.0.19",
-    "sequelize": "^6.21.4",
-    "sqlite3": "^5.0.11"
+    "sequelize": "^6.21.4"
   }
 }

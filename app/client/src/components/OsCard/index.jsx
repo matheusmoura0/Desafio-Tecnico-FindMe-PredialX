@@ -28,20 +28,7 @@ import SortByAlphaIcon from '@mui/icons-material/SortByAlpha';
     const [rowsPerPage, setRowsPerPage] = useState(5);
     const [order, setOrder] = useState('DESC');
 
-    const sorting = (order) => { 
-      if (order === 'ASC') {
-        const sorted = orders.sort((a, b) => a.id - b.id);
-        setOrders(sorted);
-        setOrder('DESC');
-      } if (order === 'DESC') { 
-        const sorted = orders.sort((a, b) => b.id - a.id);
-        setOrders(sorted);
-        setOrder('ASC');
-      }
-      console.log(orders);
-    }
-
-      const sortcreated_at = (order) => { 
+  const sortcreated_at = (order) => { 
       if (order === 'ASC') {
         const sorted = [...orders].sort((a, b) =>
           a.created_at.toLowerCase() > b.created_at.toLowerCase() ? 1 : -1 
@@ -98,7 +85,7 @@ console.log(orders);
     const navigate = useNavigate();
     
     const getOrders = async () => { 
-        const orders = await axios.get('http://localhost:3003/orders/');
+        const orders = await axios.get('http://localhost:3001/orders/');
         setOrders(orders.data);
       };
     useEffect(() => { 
@@ -118,7 +105,7 @@ console.log(orders);
 
 
     const handleDelete = async (id) => { 
-        await axios.delete(`http://localhost:3003/orders/${id}`);
+        await axios.delete(`http://localhost:3001/orders/${id}`);
         const newOrders = orders.filter(order => order.id !== id);
         setOrders(newOrders);
       };

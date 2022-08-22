@@ -8,7 +8,17 @@ const create = async (client_id, employe_id, related_problem) => {
 };
 
 const getAll = async () => {
-    const allOrders = await ServiceOrder.findAll();
+    const allOrders = await ServiceOrder.findAll({
+        include: [{
+            model: Clientes,
+            as: 'cliente',
+        attributes: ['name']
+        }, {
+            model: Employes,
+            as: 'employe',
+        attributes: ['name']
+        }],
+    });
     return allOrders;
 }
 

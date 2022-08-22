@@ -20,8 +20,7 @@ const [password, setPassword] = useState('');
       email,
       password
     }
-    await axios.post('http://localhost:3003/colaboradores', data)
-    navigate('/')
+    await axios.post('http://localhost:3001/colaboradores/', data)
   }
 
   return (
@@ -37,6 +36,7 @@ const [password, setPassword] = useState('');
             onChange={(e) => {setEmail(e.target.value) } }
             placeholder="E-mail" />
             <Input
+            type='password'
             onChange={(e) => {setPassword(e.target.value) } }
             placeholder="Senha" />
 

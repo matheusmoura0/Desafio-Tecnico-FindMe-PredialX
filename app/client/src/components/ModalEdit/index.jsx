@@ -16,13 +16,13 @@ export default function EditModal({related_problem}) {
     const [dropdown, setDropdown] = useState([]);
 
 const updateContent = async (id, content) => { 
-    await axios.put(`http://localhost:3003/orders/${id}`, { related_problem: content});
+    await axios.put(`http://localhost:3001/orders/${id}`, { related_problem: content});
     setIsOpen(false);
 }
 
 
 const getProblemId = async () => { 
-  const orders = await axios.get('http://localhost:3003/orders/');
+  const orders = await axios.get('http://localhost:3001/orders/');
   setDropdown(orders.data);
 };
 

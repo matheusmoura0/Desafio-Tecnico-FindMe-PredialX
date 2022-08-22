@@ -13,7 +13,7 @@ const port = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 app.use('/clientes', clientRouter);
-app.use('/funcionarios', employeeRouter);
+app.use('/colaboradores', employeeRouter);
 app.use('/orders', orderRouter);
 app.use('/admin', adminRouter);
 

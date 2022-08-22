@@ -26,19 +26,19 @@ export default function Register() {
 
   
 const getClienteId = async () => { 
-  const clientes = await axios.get('http://localhost:3003/clientes/');
+  const clientes = await axios.get('http://localhost:3001/clientes/');
   const clienteId = clientes.data.map(cliente => cliente.id);
   setDropdown(clienteId);
 };
 
 const getColaboradorId = async () => { 
-  const colaboradores = await axios.get('http://localhost:3003/colaboradores/');
+  const colaboradores = await axios.get('http://localhost:3001/colaboradores/');
   const colaboradorId = colaboradores.data.map(colaborador => colaborador.id);
   setDropdownContent(colaboradorId);
 }
 
 const register = async () => { 
-  await axios.post('http://localhost:3003/orders/', { client_id: cliente, employee_id: colaborador, related_problem: content});
+  await axios.post('http://localhost:3001/orders/', { client_id: cliente, employee_id: colaborador, related_problem: content});
   setCliente('');
   setColaborador('');
   setContent('');

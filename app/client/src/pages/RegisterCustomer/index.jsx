@@ -27,7 +27,7 @@ export default function RegisterCustomer() {
                 disabled={!cliente}
                 type='button'
                 onClick={() => {
-                    axios.post('http://localhost:3003/clientes/', { name: cliente })
+                    axios.post('http://localhost:3001/clientes/', { name: cliente })
                     .then(res => {
                         setClienteId(res.data.id);
                     })

@@ -22,7 +22,7 @@ export default function Login() {
             password
         }
         try {
-        const res = await axios.post('http://localhost:3003/admin', data);
+        const res = await axios.post('http://localhost:3001/admin', data);
         if (res.data.token) {
             console.log('salvou');
             setLocalStorage('token', res.data.token);

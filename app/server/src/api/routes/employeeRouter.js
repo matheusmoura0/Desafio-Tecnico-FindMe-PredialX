@@ -10,7 +10,6 @@ router.post("/", [
     employeeValidation.nameValidation,
     employeeValidation.emailValidation,
     employeeValidation.passwordValidation,
-    employeeValidation.existenceCondition,
     employeeController.create
 ]);
 router.get("/", employeeController.getAll);
