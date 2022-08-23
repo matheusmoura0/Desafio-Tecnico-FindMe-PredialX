@@ -74,7 +74,7 @@ Para rodar esse projeto localmente é necessario ultilizar Docker, Docker Compos
 ## Funções
 
 - [ ] Criar um cliente 
-- [ ] Exclur um cliente
+- [ ] Excluir um cliente
 - [ ] Criar um colaborador
 - [ ] Excluir um colaborador 
 - [ ] Criar uma ordem de serviço
