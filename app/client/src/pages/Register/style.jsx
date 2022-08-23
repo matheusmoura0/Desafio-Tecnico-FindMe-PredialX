@@ -42,12 +42,11 @@ const Form = styled.form`
   flex-direction:column;
   align-items: center;
   overflow:hidden;
-  border:1px solid #ccc;
   background: whitesmooke;
 `;
 
 const Title = styled.h1`
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
     text-align: center;
     margin-top: 1rem;

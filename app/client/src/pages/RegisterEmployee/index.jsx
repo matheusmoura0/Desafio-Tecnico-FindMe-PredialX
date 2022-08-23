@@ -3,7 +3,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import { useNavigate } from 'react-router-dom';
 import './styles.css';
 import axios from 'axios';
-import { Container, Form, Title, Input, Button } from './style';
+import { Container, Form, Title, Input, Button} from './style';
 
 export default function RegisterEmployee() {
 const [name, setName] = useState('');
@@ -30,20 +30,25 @@ const [password, setPassword] = useState('');
           <div>
             <Title> Cadastro de colaborador </Title>
             <Input  
+            value={name}
             onChange={(e) => {setName(e.target.value) } }
             placeholder="Nome" />
-            <Input 
+            <Input
+            value={email}
             onChange={(e) => {setEmail(e.target.value) } }
             placeholder="E-mail" />
             <Input
+            value={password}
             type='password'
             onChange={(e) => {setPassword(e.target.value) } }
             placeholder="Senha" />
-
-            <Button 
-            disbled={!validEmail || password.length < 6}
-            type="button"
-            onClick={() => {register()} }>Cadastrar</Button>
+            <Button
+            type='button'
+            onClick={() => {register()} }
+            disabled={!validEmail || password.length < 6 }
+            >
+              Cadastrar
+            </Button>
             </div>
       </Form>
       </Container>

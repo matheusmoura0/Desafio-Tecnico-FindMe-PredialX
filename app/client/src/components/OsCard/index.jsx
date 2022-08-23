@@ -148,13 +148,13 @@ console.log(orders);
                           <TableCell
                           >ID</TableCell>
                           <TableCell>
-                            Problema relatado 
+                            PROBLEMA RELATADO
                             </TableCell>
                           <TableCell>
-                           cliente
+                           CLIENTE
                             </TableCell>
                           <TableCell>
-                           colaborador
+                           COLABORADOR
                             </TableCell>
                       </TableRow>
                   </TableHead>

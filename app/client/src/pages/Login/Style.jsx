@@ -30,7 +30,6 @@ display:flex;
 flex-direction:column;
 align-items: center;
 overflow:hidden;
-border:1px solid #ccc;
 background: whitesmooke;
 `
 

@@ -63,7 +63,9 @@ export default function Login() {
         >Entrar
         </LoginButton>
         <div>
-            <label htmlFor='showpassword'> 
+            <label
+            className='showpassowrd'
+            htmlFor='showpassword'> 
             <input id='showpassword' type="checkbox" onChange={ () => setShowPassword(!showPassword) } />
             </label>Mostrar senha
         </div>
