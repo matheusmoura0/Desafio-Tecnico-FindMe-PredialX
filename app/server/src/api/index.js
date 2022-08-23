@@ -6,7 +6,7 @@ const orderRouter = require('./routes/orderRouter');
 const adminRouter = require('./routes/adminRouter');
 const { initialize } = require('./initialize')
 
-
+// simplifica a montagem da aplicação para fins avaliativos
 initialize();
 
 
