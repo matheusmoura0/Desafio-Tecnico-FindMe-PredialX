@@ -1,11 +1,12 @@
 const env = process.env.NODE_ENV || 'development';
 const config = require('../database/config/config.js')[env];
+const { date } = require('joi');
 const mysql = require('mysql2/promise');
 const { Sequelize } = require('sequelize');
 const { administrador }  =  require('../database/models/');
 const { Clientes }  =  require('../database/models/');
 const { Colaboradores }  =  require('../database/models/');
-const { OrderDeServiço }  =  require('../database/models/');
+const { OrdemdeServico }  =  require('../database/models/');
 
 
 
@@ -20,7 +21,7 @@ const { OrderDeServiço }  =  require('../database/models/');
     // sync all models with database
     await Clientes.sync();
     await Colaboradores.sync();
-    await OrderDeServiço.sync();
+    await OrdemdeServico.sync();
     await administrador.sync();
     
     await administrador.upsert({
@@ -30,17 +31,19 @@ const { OrderDeServiço }  =  require('../database/models/');
     })
 
     await Clientes.upsert ({
-        name: 'test',
+        name: 'Cliente Teste',
     })
     await Colaboradores.upsert({
-        name: 'test',
+        name: 'Colaborador Teste',
         email: 'test@medium.com',
         password: '12345678'
     })
-    await OrderDeServiço.upsert({
+    await OrdemdeServico.upsert({
         client_id: 1,
         employee_id: 1,
-        related_problem: 'problema teste'
+        related_problem: 'Problema Teste',
+        created_at: Date.now(),
+
     })
 };
 

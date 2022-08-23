@@ -1,20 +1,20 @@
-const { ServiceOrder }  =  require('../../database/models/');
+const { OrdemdeServico }  =  require('../../database/models/');
 const { Clientes }  =  require('../../database/models/');
-const { Employes }  =  require('../../database/models/');
+const { Colaboradores }  =  require('../../database/models/');
 
 const create = async (client_id, employe_id, related_problem) => { 
-    const serviceOrder =  await ServiceOrder.create(client_id, employe_id, related_problem);
-    return serviceOrder
+    const OrdemdeServico1 =  await OrdemdeServico.create(client_id, employe_id, related_problem);
+    return OrdemdeServico1
 };
 
 const getAll = async () => {
-    const allOrders = await ServiceOrder.findAll({
+    const allOrders = await OrdemdeServico.findAll({
         include: [{
             model: Clientes,
             as: 'cliente',
         attributes: ['name']
         }, {
-            model: Employes,
+            model: Colaboradores,
             as: 'employe',
         attributes: ['name']
         }],
@@ -23,28 +23,28 @@ const getAll = async () => {
 }
 
 const getById = async (id) => { 
-    const serviceOrderById = await ServiceOrder.findByPk(id, { 
+    const OrdemdeServicoById = await OrdemdeServico.findByPk(id, { 
         include: [{
             model: Clientes,
             as: 'cliente'
         }, {
-            model: Employes,
+            model: Colaboradores,
             as: 'employe'
         }]
     });
-    return serviceOrderById
+    return OrdemdeServicoById
 };
 
 const update = async (id, related_problem) => { 
-    const serviceOrderById = await ServiceOrder.findByPk(id);
-    serviceOrderById.update({ related_problem });
-    return serviceOrderById
+    const OrdemdeServicoById = await OrdemdeServico.findByPk(id);
+    OrdemdeServicoById.update({ related_problem });
+    return OrdemdeServicoById
 };
 
 const deletebyId =  async (id) => { 
-    const serviceOrderById = await ServiceOrder.findByPk(id);
-    serviceOrderById.destroy({ where: { id } });
-    return serviceOrderById
+    const OrdemdeServicoById = await OrdemdeServico.findByPk(id);
+    OrdemdeServicoById.destroy({ where: { id } });
+    return OrdemdeServicoById
 };
 
 module.exports={
