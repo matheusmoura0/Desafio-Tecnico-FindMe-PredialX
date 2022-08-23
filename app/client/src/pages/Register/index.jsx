@@ -33,7 +33,6 @@ const getColaboradorId = async () => {
 
 }
 
-//acabar de arrumar as duas funcoes pasll
 
 const getClienteId = async () => { 
   const clientesData = await axios.get('http://localhost:3001/colaboradores/');
