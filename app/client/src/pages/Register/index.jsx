@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios';
 import { TextArea, Container, Form, Title, Button } from './style';
-import ClearIcon from '@mui/icons-material/Clear';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import { useNavigate } from 'react-router-dom';
 import './styles.css';
@@ -46,6 +45,7 @@ const register = async () => {
   setCliente('');
   setColaborador('');
   setContent('');
+  navigate('/dashboard')
 }
 
 
@@ -66,7 +66,7 @@ const register = async () => {
         className="select"
        selected={cliente}
         onChange={(e) => setCliente(e.target.value)}>
-          <option>Id do cliente </option>
+          <option>Selecione o cliente </option>
           {dropdown.map(order => ( 
             
             <option key={order.id} value={[order.id, order.name]} >{`#${order.id}: ${order.name}` }</option>
@@ -76,7 +76,7 @@ const register = async () => {
         <select 
               className='select'
         onChange={(e) => setColaborador(e.target.value)} >
-          <option>Id do Colaborador </option>
+          <option>Selecione o  Colaborador </option>
           {dropdownContent.map(order => ( 
             <option key={order.id} value={[order.id, order.name]} >{`#${order.id}: ${order.name}` }</option>
           ))}
@@ -87,7 +87,6 @@ const register = async () => {
         type='button'
         onClick={() => register()}> Registrar </Button>
 
-        <ClearIcon className='clearIcon' onClick={() => setContent('')}> Limpar </ClearIcon>
 
         <DashboardIcon className="dashBoard" onClick={() => navigate('/dashboard')}> DashBoard </DashboardIcon>
     </div>

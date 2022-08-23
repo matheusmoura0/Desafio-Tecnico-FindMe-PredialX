@@ -17,8 +17,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import "./style.css";
 import { useNavigate } from "react-router-dom";
 import LogoutIcon from '@mui/icons-material/Logout';
-import SortIcon from '@mui/icons-material/Sort';
-
 
 
   export default function OrderCard() {
@@ -27,23 +25,6 @@ import SortIcon from '@mui/icons-material/Sort';
     const [rowsPerPage, setRowsPerPage] = useState(5);
     const [order, setOrder] = useState('DESC');
 
-  const sortcreated_at = (order) => { 
-      if (order === 'ASC') {
-        const sorted = [...orders].sort((a, b) =>
-          a.created_at.toLowerCase() > b.created_at.toLowerCase() ? 1 : -1 
-        )
-        setOrders(sorted);
-        setOrder('DESC');
-    }
-    if (order === 'DESC') { 
-      const sorted = [...orders].sort((a, b) =>
-      b.created_at.toLowerCase() > a.created_at.toLowerCase() ? 1 : -1 
-      )
-      setOrders(sorted);
-      setOrder('ASC');
-    }
-    console.log(orders);
-  }
 
   const sortcliente = (order) => { 
     if (order === 'ASC') {
@@ -60,7 +41,6 @@ import SortIcon from '@mui/icons-material/Sort';
     setOrders(sorted);
     setOrder('ASC');
   }
-  console.log(orders);
 }
 
 const sortcolaborador = (order) => { 
@@ -78,7 +58,6 @@ if (order === 'DESC') {
   setOrders(sorted);
   setOrder('ASC');
 }
-console.log(orders);
 }
 
     const navigate = useNavigate();
@@ -128,7 +107,6 @@ console.log(orders);
           >
            Colaboradores
           </RedirectButton>
-          <SortIcon className='ordenation' onClick={() => sortcreated_at(order)} >  </SortIcon>
           <button className='ordenation'
           onClick={ () => sortcliente(order)}
           >
