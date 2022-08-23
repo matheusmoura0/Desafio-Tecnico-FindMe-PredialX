@@ -31,7 +31,6 @@ export default function Login() {
         
 
         } catch (error) { 
-            console.log(error);
             setError(true);
         }
         
@@ -70,8 +69,9 @@ export default function Login() {
             </label>Mostrar senha
         </div>
         <p
+        className='errormsg'
         hidden={ !error }
-        > Dados invalidos </p>
+        >  Administrador não encontrado </p>
         </Form>
     </Container>
     );

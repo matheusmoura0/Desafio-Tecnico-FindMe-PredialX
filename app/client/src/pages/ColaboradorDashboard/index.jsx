@@ -18,7 +18,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function RegisterEmployee() {
 const [colaborador, setColaborador] = useState([]);
-const [showPassword, setShowpassword] = useState(true)
+const [showPassword, setShowpassword] = useState(false)
 const [page, setPage] = useState(0);
 const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -36,6 +36,7 @@ const getColaboradores = async () => {
 
 useEffect(() => {
   getColaboradores();
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [])
 
 
