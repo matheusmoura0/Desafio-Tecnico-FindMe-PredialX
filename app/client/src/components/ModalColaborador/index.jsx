@@ -27,8 +27,6 @@ export default function ColaboradorModal() {
         setName('');
         setEmail('');
         setPassword('');
-    
-        alert(`Colaborador ${name} cadastrado!`)
         window.location.reload(false);
       }
 

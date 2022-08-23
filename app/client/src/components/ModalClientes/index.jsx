@@ -43,7 +43,6 @@ export default function ModalClientes() {
                 onClick={() => {
                     axios.post('http://localhost:3001/clientes/', { name: cliente })
                     setCliente('');
-                    alert( `Cliente ${cliente} Criado com sucesso!`)
                     window.location.reload(false);
                 }
                 }>
