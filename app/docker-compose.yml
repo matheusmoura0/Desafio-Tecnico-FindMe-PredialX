@@ -43,6 +43,7 @@ services:
       - DB_HOST=db
       - DB_NAME=crud_app
       - DB_PORT=3306
+      - DB_DIALECT=mysql
     restart: always
     healthcheck:
       test: [ "CMD", "lsof", "-t", "-i:3001" ]
