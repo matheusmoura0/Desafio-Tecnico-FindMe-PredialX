@@ -29,22 +29,6 @@ const { OrdemdeServico }  =  require('../database/models/');
         email: 'admin@admin.com',
         password: '12345678',
     })
-
-    await Clientes.upsert ({
-        name: 'Cliente Teste',
-    })
-    await Colaboradores.upsert({
-        name: 'Colaborador Teste',
-        email: 'test@medium.com',
-        password: '12345678'
-    })
-    await OrdemdeServico.upsert({
-        client_id: 1,
-        employee_id: 1,
-        related_problem: 'Problema Teste',
-        created_at: Date.now(),
-
-    })
 };
 
 module.exports = {
