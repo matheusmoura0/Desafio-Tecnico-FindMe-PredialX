@@ -39,7 +39,7 @@ export default function ColaboradorModal() {
   
     return (
       <div className="App">
-        <button className="showModalButton" onClick={toggleModal}> Cadastrar Colaborador </button>
+        <button className="showModalButtondf" onClick={toggleModal}> Cadastrar Colaborador </button>
   
         <Modal
           isOpen={isOpen}

@@ -61,11 +61,10 @@
     margin-top: 10%;
     color: #000;
   }
-  .showModalButton {
-    border-radius: 10rm;
-    top: 5px;
+  .showModalButtondf {
+    top: 10px;
     left:5px; 
-    float: left;
+    float: right;
     margin-top: 0%;
     background-color: #4CAF50;
     border: none;
