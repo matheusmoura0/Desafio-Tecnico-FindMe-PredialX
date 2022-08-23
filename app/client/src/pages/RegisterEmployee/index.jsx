@@ -30,15 +30,12 @@ const [password, setPassword] = useState('');
           <div>
             <Title> Cadastro de colaborador </Title>
             <Input  
-            value={name}
             onChange={(e) => {setName(e.target.value) } }
             placeholder="Nome" />
             <Input
-            value={email}
             onChange={(e) => {setEmail(e.target.value) } }
             placeholder="E-mail" />
             <Input
-            value={password}
             type='password'
             onChange={(e) => {setPassword(e.target.value) } }
             placeholder="Senha" />

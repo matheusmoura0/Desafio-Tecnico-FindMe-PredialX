@@ -1,22 +1,36 @@
 import React, { useState }from 'react'
 import axios from 'axios';
 import { Container, Form, Title, Button, Input } from './style';
-import DashboardIcon from '@mui/icons-material/Dashboard'
-import {useNavigate} from 'react-router-dom';
-import ClientesModal from '../../components/ClientesModal';
+import Modal from "react-modal";
 import './styles.css';
 
 
-export default function RegisterCustomer() {
+
+export default function ModalClientes() {
     const [clienteId, setClienteId] = useState('');
     const [cliente, setCliente] = useState('');
 
-    const navigate = useNavigate();
     
+        const [isOpen, setIsOpen] = useState(false);
+      
+        function toggleModal() {
+          setIsOpen(!isOpen);
+        }
+      
+        return (
+          <div className="App">
+            <button className="showModalButton" onClick={toggleModal}> Cadastrar novo cliente </button>
+      
+            <Modal
+              isOpen={isOpen}
+              onRequestClose={toggleModal}
+              contentLabel="My dialog"
+              className="mymodal"
+              overlayClassName="myoverlay"
+              closeTimeoutMS={500}
+            >
 
-  return (
-    <div>
-        <Container>
+<Container>
             <Form>
                 <Title> Cadastro de cliente </Title>
                 <Input
@@ -39,12 +53,11 @@ export default function RegisterCustomer() {
                     Criar
                 </Button>
             </Form>
-            <ClientesModal/>
 
         
         </Container>
-        
-        <DashboardIcon className="dashBoard" onClick={() => navigate('/dashboard')}> DashBoard </DashboardIcon>
-    </div>
-  )
-}
+              <button className="modalButton" onClick={toggleModal}> X </button>
+            </Modal>
+          </div>
+        );
+      }

@@ -1,0 +1,119 @@
+.mymodal {
+    text-align: center;
+    width: 50%;
+    height: 50%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+    border: 1px solid #ccc;
+    background: #fff;
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+  }
+  
+  .myoverlay {
+    width: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+  
+  .ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+  }
+  
+  .ReactModal__Overlay--after-open {
+    opacity: 1;
+  }
+  
+  .ReactModal__Overlay--before-close {
+    opacity: 0;
+  }
+
+  .modalButton {
+    position:absolute;
+    top: 5px;
+    left:5px; 
+    float: top;
+    margin-top: 0%;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .problem {
+    width: 750px;
+    white-space: nowrap;
+    overflow:hidden;
+    font-size: 1em;
+    margin-top: 10%;
+    color: #000;
+  }
+  .showModalButton {
+    border-radius: 10rm;
+    top: 5px;
+    left:5px; 
+    float: right;
+    margin-top: 0%;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .editpen {
+    float: right;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    width: 4rem;
+    height: 4rem;
+    background: #fff;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    border-radius: 40px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    margin-top: 30px;
+}
+.editpen:hover {
+    background: #4CAF50;
+    color: #fff;
+}
+.editpen:active {
+    background: #4CAF50;
+    color: #fff;
+}
+.editpen:focus {
+    outline: none;
+}
+
+.SaveIcon {
+    margin-top: 10%;
+    top: 0;
+    right: 0;
+    width: 2rem;
+    height: 2rem;
+    background: #fff;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;   
+}
+

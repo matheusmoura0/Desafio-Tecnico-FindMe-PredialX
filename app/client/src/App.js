@@ -2,7 +2,7 @@ import React from 'react';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
-import RegisterCustomer from './pages/RegisterCustomer';
+import ClientesDashboard from './pages/ClientesDashboard';
 import RegisterEmployee from './pages/RegisterEmployee';
 import { Routes, Route } from 'react-router-dom';
 
@@ -24,7 +24,7 @@ function App() {
       />
       <Route
         path="/registerCustomer"
-        element={<RegisterCustomer />}
+        element={<ClientesDashboard />}
       />
       <Route
         path="/registerEmployee"

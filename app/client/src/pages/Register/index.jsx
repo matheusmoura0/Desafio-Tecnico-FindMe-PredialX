@@ -22,18 +22,24 @@ export default function Register() {
   useEffect(() => { 
     getColaboradorId();
     getClienteId();
-  } ,[])
+  })
+
+
 
   
 const getColaboradorId = async () => { 
-  const colaboradores = await axios.get('http://localhost:3001/orders');
-  setDropdownContent(colaboradores.data);
+  const colaboradores = await axios.get('http://localhost:3001/clientes/');
   console.log(colaboradores.data)
+  setDropdown(colaboradores.data);
+
 }
 
+//acabar de arrumar as duas funcoes pasll
+
 const getClienteId = async () => { 
-  const clientesData = await axios.get('http://localhost:3001/orders/');
-  setDropdown(clientesData.data);
+  const clientesData = await axios.get('http://localhost:3001/colaboradores/');
+  setDropdownContent(clientesData.data);
+  console.log(dropdown)
 };
 
 
@@ -65,7 +71,8 @@ const register = async () => {
         onChange={(e) => setCliente(e.target.value)}>
           <option>Id do cliente </option>
           {dropdown.map(order => ( 
-            <option key={order.id} value={[order.id, order.cliente.name]} >{`#${order.id}: ${order.cliente.name}` }</option>
+            
+            <option key={order.id} value={[order.id, order.name]} >{`#${order.id}: ${order.name}` }</option>
           ))}
 
         </select>
@@ -74,7 +81,7 @@ const register = async () => {
         onChange={(e) => setColaborador(e.target.value)} >
           <option>Id do Colaborador </option>
           {dropdownContent.map(order => ( 
-            <option key={order.id} value={[order.id, order.employe.name]} >{`#${order.id}: ${order.employe.name}` }</option>
+            <option key={order.id} value={[order.id, order.name]} >{`#${order.id}: ${order.name}` }</option>
           ))}
         </select>
 
