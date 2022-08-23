@@ -13,6 +13,7 @@ import{ TableContainer,
   Paper,
   TablePagination,
   } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 import './styles.css';
 
 
@@ -26,7 +27,6 @@ export default function ClientesDashboard() {
     const getclientes = async () => { 
       const clientes = await axios.get('http://localhost:3001/clientes/');
       setCliente(clientes.data);
-      console.log(cliente)
     };
     
     useEffect(() => {
@@ -49,22 +49,34 @@ export default function ClientesDashboard() {
     const undeleted = cliente.filter(order => order.id !== id);
     setCliente(undeleted);
   };
-
-
-    
+   
 
   return (
     
-      <><TableContainer>
+      <>
+      <DashboardIcon
+        className='dashBoard1'
+        onClick={() => navigate('/dashboard')} />
+        <RegisterCustomer />
+      <TableContainer>
       <Paper>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>
-                Id
+              <TableCell
+              className='tableheader'
+              >
+                ID
               </TableCell>
-              <TableCell>
-                Name
+              <TableCell
+              className='tableheader'
+              >
+                NOME
+              </TableCell>
+              <TableCell
+             className='tableheader'
+             >
+                Ações
               </TableCell>
             </TableRow>
           </TableHead>
@@ -76,17 +88,24 @@ export default function ClientesDashboard() {
                     {el.id}
                   </TableCell>
                   <TableCell>
-                    {el.name}
+                  {el.name}
                   </TableCell>
-                  <button
-                    onClick={() => (handleDelete(el.id))}
-                  > delete </button>
+                  <TableCell>
+                  <DeleteIcon
+                  className='delete'
+                  onClick={() => (handleDelete(el.id))}
+                  >
+                    Deletar
+                  </DeleteIcon>
+                  </TableCell>
                 </TableRow>
               ))}
           </TableBody>
         </Table>
       </Paper>
+      <TableCell></TableCell>
       <TablePagination
+        className='pagination'
         rowsPerPageOptions={[5, 10, 25]}
         count={cliente.length}
         rowsPerPage={rowsPerPage}
@@ -95,8 +114,7 @@ export default function ClientesDashboard() {
         onRowsPerPageChange={handleChangeRowsPerPage}
         labelRowsPerPage='Linhas por página'
         labelDisplayedRows={({ from, to, count }) => `${from}-${to} de ${count}`} />
-    </TableContainer><DashboardIcon
-        className='dashBoard'
-        onClick={() => navigate('/dashboard')} /><RegisterCustomer /></>
+    </TableContainer>
+    </>
   )
 }

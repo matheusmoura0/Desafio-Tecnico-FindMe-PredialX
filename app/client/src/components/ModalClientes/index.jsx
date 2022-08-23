@@ -7,7 +7,6 @@ import './styles.css';
 
 
 export default function ModalClientes() {
-    const [clienteId, setClienteId] = useState('');
     const [cliente, setCliente] = useState('');
 
     
@@ -19,7 +18,7 @@ export default function ModalClientes() {
       
         return (
           <div className="App">
-            <button className="showModalButton" onClick={toggleModal}> Cadastrar novo cliente </button>
+            <button className="showModalButton1" onClick={toggleModal}> Cadastrar novo cliente </button>
       
             <Modal
               isOpen={isOpen}
@@ -40,14 +39,12 @@ export default function ModalClientes() {
                 />
                 <Button 
                 disabled={!cliente}
-                type='button'
+                type='submit'
                 onClick={() => {
                     axios.post('http://localhost:3001/clientes/', { name: cliente })
-                    .then(res => {
-                        setClienteId(res.data.id);
-                    })
                     setCliente('');
-                    alert( `Cliente #${clienteId} Criado com sucesso!`)
+                    alert( `Cliente ${cliente} Criado com sucesso!`)
+                    window.location.reload(false);
                 }
                 }>
                     Criar

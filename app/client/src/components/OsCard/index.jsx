@@ -121,12 +121,12 @@ console.log(orders);
           <RedirectButton
           onClick={ () => navigate('/registerCustomer') }
           >
-            Registar Cliente
+            Clientes
           </RedirectButton>
           <RedirectButton
           onClick={ () => navigate('/registerEmployee') }
           >
-            Registrar colaborador
+           Colaboradores
           </RedirectButton>
           <SortIcon className='ordenation' onClick={() => sortcreated_at(order)} >  </SortIcon>
           <button className='ordenation'

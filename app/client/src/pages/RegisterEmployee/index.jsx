@@ -21,6 +21,11 @@ const [password, setPassword] = useState('');
       password
     }
     await axios.post('http://localhost:3001/colaboradores/', data)
+    setName('');
+    setEmail('');
+    setPassword('');
+
+    alert(`Colaborador ${name} cadastrado!`)
   }
 
   return (
@@ -29,13 +34,16 @@ const [password, setPassword] = useState('');
         <Form>
           <div>
             <Title> Cadastro de colaborador </Title>
-            <Input  
+            <Input 
+            value={name}
             onChange={(e) => {setName(e.target.value) } }
             placeholder="Nome" />
             <Input
+            value={email}
             onChange={(e) => {setEmail(e.target.value) } }
             placeholder="E-mail" />
             <Input
+            value={password}
             type='password'
             onChange={(e) => {setPassword(e.target.value) } }
             placeholder="Senha" />
