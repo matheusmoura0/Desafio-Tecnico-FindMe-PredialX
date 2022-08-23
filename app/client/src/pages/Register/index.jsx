@@ -22,14 +22,13 @@ export default function Register() {
   useEffect(() => { 
     getColaboradorId();
     getClienteId();
-  })
+  }, [])
 
 
 
   
 const getColaboradorId = async () => { 
   const colaboradores = await axios.get('http://localhost:3001/clientes/');
-  console.log(colaboradores.data)
   setDropdown(colaboradores.data);
 
 }
@@ -39,13 +38,12 @@ const getColaboradorId = async () => {
 const getClienteId = async () => { 
   const clientesData = await axios.get('http://localhost:3001/colaboradores/');
   setDropdownContent(clientesData.data);
-  console.log(dropdown)
 };
 
 
 
 const register = async () => { 
-  await axios.post('http://localhost:3001/orders/', { client_id: cliente, employee_id: colaborador, related_problem: content});
+  await axios.post('http://localhost:3001/orders/', { client_id: cliente[0], employee_id: colaborador[0], related_problem: content});
   setCliente('');
   setColaborador('');
   setContent('');
@@ -87,7 +85,7 @@ const register = async () => {
 
         <Button 
         disabled={!content || !cliente || !colaborador}
-        type='submit'
+        type='button'
         onClick={() => register()}> Registrar </Button>
 
         <ClearIcon className='clearIcon' onClick={() => setContent('')}> Limpar </ClearIcon>
