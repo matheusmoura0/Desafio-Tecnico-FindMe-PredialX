@@ -20,22 +20,23 @@ export default function Register() {
   const navigate = useNavigate();
 
   useEffect(() => { 
-    getClienteId();
     getColaboradorId();
+    getClienteId();
   } ,[])
 
   
+const getColaboradorId = async () => { 
+  const colaboradores = await axios.get('http://localhost:3001/orders');
+  setDropdownContent(colaboradores.data);
+  console.log(colaboradores.data)
+}
+
 const getClienteId = async () => { 
-  const clientes = await axios.get('http://localhost:3001/clientes/');
-  const clienteId = clientes.data.map(cliente => cliente.id);
-  setDropdown(clienteId);
+  const clientesData = await axios.get('http://localhost:3001/orders/');
+  setDropdown(clientesData.data);
 };
 
-const getColaboradorId = async () => { 
-  const colaboradores = await axios.get('http://localhost:3001/colaboradores/');
-  const colaboradorId = colaboradores.data.map(colaborador => colaborador.id);
-  setDropdownContent(colaboradorId);
-}
+
 
 const register = async () => { 
   await axios.post('http://localhost:3001/orders/', { client_id: cliente, employee_id: colaborador, related_problem: content});
@@ -63,21 +64,17 @@ const register = async () => {
        selected={cliente}
         onChange={(e) => setCliente(e.target.value)}>
           <option>Id do cliente </option>
-          {dropdown.map(id => (
-            <option
-            key={id} value={id}>
-              {id}
-            </option>
+          {dropdown.map(order => ( 
+            <option key={order.id} value={[order.id, order.cliente.name]} >{`#${order.id}: ${order.cliente.name}` }</option>
           ))}
+
         </select>
         <select 
               className='select'
         onChange={(e) => setColaborador(e.target.value)} >
           <option>Id do Colaborador </option>
-          {dropdownContent.map(id => (
-            <option key={id} value={id}>
-              {id}
-            </option>
+          {dropdownContent.map(order => ( 
+            <option key={order.id} value={[order.id, order.employe.name]} >{`#${order.id}: ${order.employe.name}` }</option>
           ))}
         </select>
 

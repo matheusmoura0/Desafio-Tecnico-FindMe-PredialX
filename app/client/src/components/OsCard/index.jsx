@@ -18,7 +18,6 @@ import "./style.css";
 import { useNavigate } from "react-router-dom";
 import LogoutIcon from '@mui/icons-material/Logout';
 import SortIcon from '@mui/icons-material/Sort';
-import SortByAlphaIcon from '@mui/icons-material/SortByAlpha';
 
 
 
@@ -87,6 +86,7 @@ console.log(orders);
     const getOrders = async () => { 
         const orders = await axios.get('http://localhost:3001/orders/');
         setOrders(orders.data);
+        console.log(orders)
       };
     useEffect(() => { 
       getOrders();
@@ -129,11 +129,15 @@ console.log(orders);
             Registrar colaborador
           </RedirectButton>
           <SortIcon className='ordenation' onClick={() => sortcreated_at(order)} >  </SortIcon>
-          <SortByAlphaIcon className='ordenation'
+          <button className='ordenation'
           onClick={ () => sortcliente(order)}
-          />
-          <SortByAlphaIcon className='ordenation2'
-          onClick={ () => sortcolaborador(order)}/>
+          >
+            Ordenar por Cliente
+          </button>
+          <button className='ordenation'
+          onClick={ () => sortcolaborador(order)}>
+            Ordenar por Colaborador
+          </button>
       </><TableContainer
           component={Paper}
       >

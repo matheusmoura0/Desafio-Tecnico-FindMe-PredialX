@@ -50,5 +50,4 @@ const RedirectButton = styled.button`
 `;
 
 
-
 export { EditButton, DeleteButton, RedirectButton };

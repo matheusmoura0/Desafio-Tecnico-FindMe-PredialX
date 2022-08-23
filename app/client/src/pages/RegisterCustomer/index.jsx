@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Container, Form, Title, Button, Input } from './style';
 import DashboardIcon from '@mui/icons-material/Dashboard'
 import {useNavigate} from 'react-router-dom';
+import ClientesModal from '../../components/ClientesModal';
 import './styles.css';
 
 
@@ -38,7 +39,11 @@ export default function RegisterCustomer() {
                     Criar
                 </Button>
             </Form>
+            <ClientesModal/>
+
+        
         </Container>
+        
         <DashboardIcon className="dashBoard" onClick={() => navigate('/dashboard')}> DashBoard </DashboardIcon>
     </div>
   )
