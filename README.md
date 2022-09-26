@@ -5,7 +5,7 @@
     <img src="https://media.discordapp.net/attachments/779206258082185217/1011048366190370866/unknown.png" alt="Logo" width="80" height="80">
   </a>
 
-<h1 align="center">CRUD desafio tecnico FindMe</h1>
+<h1 align="center">CRUD FullStack Predial X </h1>
 
   <p align="center">
     Gerenciador de ordens de serviço, clientes e colaboradores.
